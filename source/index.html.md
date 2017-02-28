@@ -1,5 +1,5 @@
 ---
-title:PPDAI API Reference
+title: PPDAI API Reference
 
 language_tabs:
   - Java
@@ -17,9 +17,8 @@ search: true
 ---
 
 # 账号类
-发送登录动态密码
-
 ## AuthService.SendSMSAuthCode
+发送登录动态密码
 > 示例代码:
 
 ```Java
