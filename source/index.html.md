@@ -20,12 +20,14 @@ search: true
 发送登录动态密码
 
 ## AuthService.SendSMSAuthCode
-```Java
+> 示例代码:
 
+```Java
+    java code
 ```
 
-```.Net
-
+```.net
+    .net code
 ```
 
 > 请求参数示例:
@@ -116,13 +118,15 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 # CPS
 
 ## BdRegService.UserInfoAdd
+用户信息添加.
+> 示例代码:
 
 ```Java
-
+    java code
 ```
 
-```.Net
-
+```.net
+    .net code
 ```
 
 > 请求参数示例:
@@ -151,8 +155,6 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
   }
 ]
 ```
-
-用户信息添加.
 
 
 ### HTTP Request
@@ -189,7 +191,7 @@ ResultMessage|	string|	失败的消息	|
 Content	String|	RedirectUrl |表示要跳转的地址 (需要Url解码一下)	|{"RedirectUrl":""}
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+    备注 — 备注备注备注备注备注备注备注备注
 </aside>
 
 #借出类
