@@ -1,12 +1,6 @@
 ---
 title: PPDAI API Reference
 
-language_tabs:
-  - java
-  - C#
-  - python
-  - javascript
-
 toc_footers:
   - Copyright Reserved 2007-2016拍拍贷
   - 上海拍拍贷金融信息服务有限公司
@@ -18,30 +12,6 @@ search: true
 
 # 账号类
 ## AuthService.SendSMSAuthCode
-
-```C#
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```java
-# With java, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
 
 > 请求参数示例:
 
@@ -116,62 +86,9 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 -100001204	|动态登录密码发送失败	|请稍后重试或联系客服
 -100001205	|已注销，请联系客服	|请联系客服
 
-# 资金类
-
-```C#
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```java
-# With java, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-
 
 # CPS
-
 ## BdRegService.UserInfoAdd
-
-
-```C#
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```java
-# With java, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
 
 > 请求参数示例:
 ```json
