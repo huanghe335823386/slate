@@ -91,6 +91,7 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 ## BdRegService.UserInfoAdd
 
 > 请求参数示例:
+
 ```json
     [
       {
