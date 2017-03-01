@@ -21,11 +21,11 @@ search: true
 > 示例代码:
 
 ```Java
-    java code
+    //java code
 ```
 
 ```.net
-    .net code
+    //.net code
 ```
 
 > 请求参数示例:
@@ -69,8 +69,8 @@ POST http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode
 
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
-X-PPD-APPID	String	|是|	拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP	String|	是	|UTC时间戳	|yyyy-MM-dd HH:mm:ss
+X-PPD-APPID	|String	|是|	拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
+X-PPD-TIMESTAMP|	String|	是	|UTC时间戳	|yyyy-MM-dd HH:mm:ss
 X-PPD-TIMESTAMP-SIGN | String	|是	|使用私钥对应用ID+时间戳进行签名	|
 X-PPD-SIGNVERSION	|Double|	否	|签名验证版本号,最新版本号为1	|1
 X-PPD-SERVICEVERSION |  Double |	否	服务器版本号,最新版本号为1	|1
@@ -105,11 +105,11 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 > 示例代码:
 
 ```Java
-    java code
+    //java code
 ```
 
 ```.net
-    .net code
+    //.net code
 ```
 
 
@@ -121,11 +121,11 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 > 示例代码:
 
 ```Java
-    java code
+    //java code
 ```
 
 ```.net
-    .net code
+    //.net code
 ```
 
 > 请求参数示例:
