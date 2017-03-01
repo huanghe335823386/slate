@@ -10,15 +10,12 @@ toc_footers:
   - 上海拍拍贷金融信息服务有限公司
   - 沪ICP备05063398号
 
-<!-- includes: -->
-  <!-- - errors -->
 
 search: true
 ---
 
 # 账号类
 ## AuthService.SendSMSAuthCode
-<!-- > 示例代码: -->
 
 ```Java
     //java code
@@ -106,8 +103,6 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 # 资金类
 
-<!-- > 示例代码: -->
-
 ```Java
     //java code
 ```
@@ -122,7 +117,6 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 ## BdRegService.UserInfoAdd
 
-<!-- > 示例代码: -->
 
 ```Java
     //java code
