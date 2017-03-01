@@ -3,7 +3,7 @@ title: PPDAI API Reference
 
 language_tabs:
   - Java
-  - .net
+  - net
 
 toc_footers:
   - Copyright Reserved 2007-2016拍拍贷
@@ -18,14 +18,13 @@ search: true
 ## AuthService.SendSMSAuthCode
 
 ```Java
-    //java code
-    import com.ppdai.uc.*;
-
+//java code
+import com.ppdai.uc.*;
 ```
 
-```.net
-    //.net code
-    import com.ppdai.uc.*;
+```net
+//net code
+import com.ppdai.uc.*;
 ```
 
 > 请求参数示例:
@@ -104,11 +103,11 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 # 资金类
 
 ```Java
-    //java code
+//java code
 ```
 
-```.net
-    //.net code
+```net
+//net code
 ```
 
 
@@ -119,11 +118,11 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 
 ```Java
-    //java code
+//java code
 ```
 
-```.net
-    //.net code
+```net
+//net code
 ```
 
 > 请求参数示例:
