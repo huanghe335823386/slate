@@ -97,7 +97,14 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
       {
         "SourceId": 0,
         "PlatformType": 2,
-        "Info": "{'name':'孙XX','shenfenzh':'3XXXXXXXXXXXXXXXX5','zhiye':'上班族','fangchan':'有房，目前无房贷','chechan':'有车，但是有车贷未还清','phone':'157XXXXXXXX','gongzixingshi':'现金','jingyingzz':'有','yuexin':'1500~3000','shebao':'连续6个月以内','duigongliushui':'半年银行流水 10万以下','fuzhaiqingkuang':'有','applyCity':'蚌埠','money':'3000','month':'12','daikuanlx':'个人贷款','chushengnian':'1996','xinyong':'少量逾期','gongsiliushui':'3万以下','jingyingzhucedi':'本地'}",
+        "Info": "{'name':'孙XX','shenfenzh':'3XXXXXXXXXXXXXXXX5','zhiye':'上班族',
+            'fangchan':'有房，目前无房贷','chechan':'有车，但是有车贷未还清',
+            'phone':'157XXXXXXXX','gongzixingshi':'现金','jingyingzz':'有',
+            'yuexin':'1500~3000','shebao':'连续6个月以内',
+            'duigongliushui':'半年银行流水 10万以下','fuzhaiqingkuang':'有',
+            'applyCity':'蚌埠','money':'3000','month':'12','daikuanlx':'个人贷款',
+            'chushengnian':'1996','xinyong':'少量逾期','gongsiliushui':'3万以下',
+            'jingyingzhucedi':'本地'}",
         "OrderId": "5765465456423465"
       }
     ]
