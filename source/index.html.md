@@ -1,194 +1,189 @@
 ---
-title: PPDAI API Reference
+title: API Reference
 
 language_tabs:
-  - Java
-  - net
+  - shell
+  - ruby
+  - python
+  - javascript
 
 toc_footers:
-  - Copyright Reserved 2007-2016拍拍贷
-  - 上海拍拍贷金融信息服务有限公司
-  - 沪ICP备05063398号
+  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
+includes:
+  - errors
 
 search: true
 ---
 
-# 账号类
-## AuthService.SendSMSAuthCode
+# Introduction
 
-```Java
-//java code
-import com.ppdai.uc.*;
+Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+
+We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+
+This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+
+# Authentication
+
+> To authorize, use this code:
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
 ```
 
-```net
-//net code
-import com.ppdai.uc.*;
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
 ```
 
-> 请求参数示例:
-
-```json
-    [
-      {
-        "Mobile": "15200000001",
-        "DeviceFP": "1234567890"
-      }
-    ]
+```shell
+# With shell, you can just pass the correct header with each request
+curl "api_endpoint_here"
+  -H "Authorization: meowmeowmeow"
 ```
 
-> 返回值示例:
+```javascript
+const kittn = require('kittn');
 
-```json
-[
-  {
-    "ResultCode": 0,
-    "ResultMessage": "动态登录密码发送成功"
-  }
-]
-```
-> 异常示例:
-
-```json
-[
-  {
-    "ResultCode": -1,
-    "ResultMessage": "内部异常"
-  }
-]
+let api = kittn.authorize('meowmeowmeow');
 ```
 
-发送登录动态密码
+> Make sure to replace `meowmeowmeow` with your API key.
 
-### HTTP Request
+Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
 
-POST http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode
+Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-### Header Parameters
+`Authorization: meowmeowmeow`
 
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-X-PPD-APPID	|String	|是|	拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP|	String|	是	|UTC时间戳	|yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN | String	|是	|使用私钥对应用ID+时间戳进行签名	|
-X-PPD-SIGNVERSION	|Double|	否	|签名验证版本号,最新版本号为1	|1
-X-PPD-SERVICEVERSION |  Double |	否	服务器版本号,最新版本号为1	|1
-X-PPD-SIGN	String	|是	|使用私钥对请求报文体进行签名|
-
-### Request Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-Mobile|String|是|登录手机号	|15200000001
-DeviceFP|String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e92bf00ae78d31e21e8
-
-### Response Parameters
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-ResultCode|	Int|	0	|返回码
-ResultMessage|	String|	返回信息	|动态注册验证码发送成功
-### ERROR CODE DESCRIPTION
-名称|	描述|	解决方案
---------- | ------- | -----------|---------|-------
--1|	内部异常	|请稍后重试或联系客服
--100001101	|设备指纹不能为空	|请输入设备指纹
--100001102	|手机号不能为空	|请输入手机号
--100001201	|当前手机未绑定有效用户	|请更换有效手机号
--100001202	|两次发送短信时间间隔不能低于一分钟	|请稍后重试
--100001203	|一天内发送次数不能超过10次	|请稍后重试
--100001204	|动态登录密码发送失败	|请稍后重试或联系客服
--100001205	|已注销，请联系客服	|请联系客服
-
-# 资金类
-
-```Java
-//java code
-```
-
-```net
-//net code
-```
-
-
-
-# CPS
-
-## BdRegService.UserInfoAdd
-
-
-```Java
-//java code
-```
-
-```net
-//net code
-```
-
-> 请求参数示例:
-```json
-    [
-      {
-        "SourceId": 0,
-        "PlatformType": 2,
-        "Info": "{'name':'孙XX','shenfenzh':'3XXXXXXXXXXXXXXXX5','zhiye':'上班族','fangchan':'有房，目前无房贷','chechan':'有车，但是有车贷未还清','phone':'157XXXXXXXX','gongzixingshi':'现金','jingyingzz':'有','yuexin':'1500~3000','shebao':'连续6个月以内','duigongliushui':'半年银行流水 10万以下','fuzhaiqingkuang':'有','applyCity':'蚌埠','money':'3000','month':'12','daikuanlx':'个人贷款','chushengnian':'1996','xinyong':'少量逾期','gongsiliushui':'3万以下','jingyingzhucedi':'本地'}",
-        "OrderId": "5765465456423465"
-      }
-    ]
-```
-
-> 返回值示例:
-
-```json
-[
-  {
-    "Result": 0,
-    "ResultCode": "null",
-    "ResultMessage": "",
-    "Content": {
-      "RedirectUrl": "http://www.ppdai.com/......."
-    }
-  }
-]
-```
-用户信息添加.
-
-### HTTP Request
-
-POST http://gw.open.ppdai.com/cps/BdRegService/UserInfoAdd
-
-### Header Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-X-PPD-APPID|String|是|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP|String|是|UTC时间戳	|yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN|	String|	是	|使用私钥对应用ID+时间戳进行签名	|
-X-PPD-SIGNVERSION|	Double	|否	|签名验证版本号,最新版本号为1|	1
-X-PPD-SERVICEVERSION|	Double|	否	|服务器版本号,最新版本号为1	|1
-X-PPD-SIGN|	String	是|	使用私钥对请求报文体进行签名|
-X-PPD-ACCESSTOKEN|	String|	是|	授权令牌|	8cf65377538741c2ba8add2615a22299
-
-### Request Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-PlatformType|	Int|	是|	平台类型1：PC; 2:移动	|2
-Info|	String|	否	|用户额外的详细信息 （可选）JSON格式	|
-OrderId	|String	|否	|订单号（可选） - 这个用户的唯一标志，例如：用户ID	|123456465465
-SourceId|	Int	|否	|	|0
-
-### Response Parameters
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-Result|	Int	|返回码 0=成功， 1=失败	|0
-ResultCode|	String|	暂时没用到	|
-ResultMessage|	string|	失败的消息	|
-Content	String|	RedirectUrl |表示要跳转的地址 (需要Url解码一下)	|{"RedirectUrl":""}
-
-<aside class="success">
-    备注 — 备注备注备注备注备注备注备注备注
+<aside class="notice">
+You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-#借出类
+# Kittens
+
+## Get All Kittens
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.get
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.get()
+```
+
+```shell
+curl "http://example.com/api/kittens"
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let kittens = api.kittens.get();
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Fluffums",
+    "breed": "calico",
+    "fluffiness": 6,
+    "cuteness": 7
+  },
+  {
+    "id": 2,
+    "name": "Max",
+    "breed": "unknown",
+    "fluffiness": 5,
+    "cuteness": 10
+  }
+]
+```
+
+This endpoint retrieves all kittens.
+
+### HTTP Request
+
+`GET http://example.com/api/kittens`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+include_cats | false | If set to true, the result will also include cats.
+available | true | If set to false, the result will include kittens that have already been adopted.
+
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
+
+## Get a Specific Kitten
+
+```ruby
+require 'kittn'
+
+api = Kittn::APIClient.authorize!('meowmeowmeow')
+api.kittens.get(2)
+```
+
+```python
+import kittn
+
+api = kittn.authorize('meowmeowmeow')
+api.kittens.get(2)
+```
+
+```shell
+curl "http://example.com/api/kittens/2"
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let max = api.kittens.get(2);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "name": "Max",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+This endpoint retrieves a specific kitten.
+
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+
+### HTTP Request
+
+`GET http://example.com/kittens/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to retrieve
 
