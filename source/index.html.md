@@ -2,8 +2,8 @@
 title: PPDAI API Reference
 
 language_tabs:
-  - shell
-  - ruby
+  - java
+  - C#
   - python
   - javascript
 
@@ -19,7 +19,7 @@ search: true
 # 账号类
 ## AuthService.SendSMSAuthCode
 
-```ruby
+```C#
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
@@ -31,8 +31,8 @@ import kittn
 api = kittn.authorize('meowmeowmeow')
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
+```java
+# With java, you can just pass the correct header with each request
 curl "api_endpoint_here"
   -H "Authorization: meowmeowmeow"
 ```
@@ -118,7 +118,7 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 # 资金类
 
-```ruby
+```C#
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
@@ -130,8 +130,8 @@ import kittn
 api = kittn.authorize('meowmeowmeow')
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
+```java
+# With java, you can just pass the correct header with each request
 curl "api_endpoint_here"
   -H "Authorization: meowmeowmeow"
 ```
@@ -149,7 +149,7 @@ let api = kittn.authorize('meowmeowmeow');
 ## BdRegService.UserInfoAdd
 
 
-```ruby
+```C#
 require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
@@ -161,8 +161,8 @@ import kittn
 api = kittn.authorize('meowmeowmeow')
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
+```java
+# With java, you can just pass the correct header with each request
 curl "api_endpoint_here"
   -H "Authorization: meowmeowmeow"
 ```
@@ -238,5 +238,5 @@ Content	String|	RedirectUrl |表示要跳转的地址 (需要Url解码一下)	|{
     备注 — 备注备注备注备注备注备注备注备注
 </aside>
 
-#借出类
+
 
