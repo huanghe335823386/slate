@@ -18,17 +18,21 @@ search: true
 
 # 账号类
 ## AuthService.SendSMSAuthCode
-> 示例代码:
+<!-- > 示例代码: -->
 
 ```Java
     //java code
+    import com.ppdai.uc.*;
+
 ```
 
 ```.net
     //.net code
+    import com.ppdai.uc.*;
 ```
 
 > 请求参数示例:
+
 ```json
     [
       {
@@ -102,7 +106,7 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 # 资金类
 
-> 示例代码:
+<!-- > 示例代码: -->
 
 ```Java
     //java code
@@ -118,7 +122,7 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 ## BdRegService.UserInfoAdd
 
-> 示例代码:
+<!-- > 示例代码: -->
 
 ```Java
     //java code
