@@ -24,7 +24,7 @@ try {
 }
 ```
 
-```.net
+```csharp
 //应用id
 string Appid = "yourAppid";
 //私钥
@@ -169,7 +169,7 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
         System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
-```.net
+```csharp
 //应用id
 string Appid = "yourAppid";
 //私钥
@@ -326,7 +326,7 @@ try {
 }
 ```
 
-```.net
+```csharp
 //应用id
 string Appid = "yourAppid";
 //私钥

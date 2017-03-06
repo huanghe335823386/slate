@@ -20,7 +20,7 @@
 
 ```
 
-```.net
+```csharp
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -162,7 +162,7 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 
 ```
 
-```.net
+```csharp
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -368,7 +368,7 @@ ResultCode	|String	|暂未使用|
 
 ```
 
-```.net
+```csharp
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -504,7 +504,7 @@ DebtInfos.CreditCode	|String	|列表等级|
 
 ```
 
-```.net
+```csharp
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -675,7 +675,7 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 
 ```
 
-```.net
+```csharp
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -828,7 +828,7 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 
 ```
 
-```.net
+```csharp
             //应用id
             string Appid = "yourAppid";
             //私钥

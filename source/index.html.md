@@ -3,7 +3,7 @@ title: 拍拍贷开放平台API文档
 
 language_tabs:
   - java
-  - .net
+  - csharp
   - python
   - php
   - shell
