@@ -24,7 +24,7 @@ try {
 }
 ```
 
-```Net
+```.net
 //应用id
 string Appid = "yourAppid";
 //私钥
@@ -38,7 +38,7 @@ Result Result = OpenApiClient.Send(Url, new PropertyObject("Mobile", "1520000000
 Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -56,7 +56,7 @@ sign = rsa.sign(sort_data)
 list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -70,7 +70,7 @@ $result = send($url, $request);
 echo $result
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
 -d devicefp="xxxff" \
 -d sign="xxx1"
@@ -169,7 +169,7 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
         System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
-```Net
+```.net
 //应用id
 string Appid = "yourAppid";
 //私钥
@@ -186,7 +186,7 @@ Result Result = OpenApiClient.Send(Url
 Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -205,7 +205,7 @@ sign = rsa.sign(sort_data)
 list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -220,7 +220,7 @@ echo $result
 
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin \
 -d devicefp="xxxff" \
 -d sign="xxx1"
@@ -326,7 +326,7 @@ try {
 }
 ```
 
-```Net
+```.net
 //应用id
 string Appid = "yourAppid";
 //私钥
@@ -340,7 +340,7 @@ Result Result = OpenApiClient.Send(Url, new PropertyObject("Mobile", "1520000000
 Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -358,7 +358,7 @@ sign = rsa.sign(sort_data)
 list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -372,7 +372,7 @@ $result = send($url, $request);
 echo $result
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/auth/LoginService/AutoLogin \
 -d devicefp="xxxff" \
 -d sign="xxx1"

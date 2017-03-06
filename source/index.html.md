@@ -2,11 +2,11 @@
 title: 拍拍贷开放平台API文档
 
 language_tabs:
-  - Java
-  - Net
-  - Python
-  - PHP
-  - Shell
+  - java
+  - .net
+  - python
+  - php
+  - shell
 
 toc_footers:
   - <a href='http://open.ppdai.com' target='_blank'>拍拍贷开放平台</a>

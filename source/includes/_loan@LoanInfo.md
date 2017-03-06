@@ -20,7 +20,7 @@
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -37,7 +37,7 @@
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -56,7 +56,7 @@ sign = rsa.sign(sort_data)
 list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -71,7 +71,7 @@ echo $result
 
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/invest/loans?limit={page_num} \
 -d start_time="2015-11-11 12:00:00 000" \
 -d sign="xxx1"
@@ -162,7 +162,7 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -178,7 +178,7 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -200,7 +200,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -217,7 +217,7 @@ echo $result
 
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/invest/loanitems \
 -d listing_ids=[23886149,23886150] \
 -d sign="xxx1"
@@ -368,7 +368,7 @@ ResultCode	|String	|暂未使用|
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -384,7 +384,7 @@ ResultCode	|String	|暂未使用|
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -403,7 +403,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -417,7 +417,7 @@ echo $result
 
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/invest/debts?limit={page_num} \
 -d sign="xxx1"
 ```
@@ -504,7 +504,7 @@ DebtInfos.CreditCode	|String	|列表等级|
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -521,7 +521,7 @@ DebtInfos.CreditCode	|String	|列表等级|
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -542,7 +542,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -558,7 +558,7 @@ echo $result
 
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/invest/debtitems \
 -d debt_ids=[2594108,2594109] \
 -d sign="xxx1"
@@ -675,7 +675,7 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -691,7 +691,7 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -712,7 +712,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -728,7 +728,7 @@ echo $result
 
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/invest/bidlistingitems \
 -d listing_ids=[100001,100002] \
 -d sign="xxx1"
@@ -828,7 +828,7 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -844,7 +844,7 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -865,7 +865,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -881,7 +881,7 @@ echo $result
 
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/invest/listing/status \
 -d listing_ids=[100000,100001] \
 -d sign="xxx1"

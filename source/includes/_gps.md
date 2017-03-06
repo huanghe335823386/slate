@@ -25,7 +25,7 @@
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -45,7 +45,7 @@
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -68,7 +68,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -82,7 +82,7 @@ $result = send($url, $request,$accessToken);
 echo $result
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/cps/fill \
 -d sourceid=0 \
 -d platformtype=2 \
@@ -179,7 +179,7 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -203,7 +203,7 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -231,7 +231,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -252,7 +252,7 @@ $result = send($url, $request,$accessToken);
 echo $result
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/cps/{access_token}/borrow \
 -d real_name=zhangsan \
 -d shenfen_zh=310xxxxxxxxxxxxxxx \

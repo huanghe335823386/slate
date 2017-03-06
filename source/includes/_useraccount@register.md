@@ -23,7 +23,7 @@
         System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -41,7 +41,7 @@
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -61,7 +61,7 @@ sign = rsa.sign(sort_data)
 list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -76,7 +76,7 @@ $result = send($url, $request);
 echo $result
 ```
 
-```Shell
+```shell
 cur http://gw.open.ppdai.com/account/register \
 -d account_name=13916818800 \
 -d role=4 \
@@ -191,7 +191,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 }
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -208,7 +208,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -227,7 +227,7 @@ sign = rsa.sign(sort_data)
 list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -241,7 +241,7 @@ $result = send($url, $request);
 echo $result
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
 -d devicefp="xxxff" \
 -d sign="xxx1"
@@ -335,7 +335,7 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
         System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -353,7 +353,7 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -375,7 +375,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -391,7 +391,7 @@ $result = send($url, $request);
 echo $result
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/account/{mobile}/smscoderegister \
 -d devicefp="xxxff" \
 -d code=1100 \
@@ -497,7 +497,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 
 ```
 
-```Net
+```.net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -513,7 +513,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
             Console.WriteLine(Result);
 ```
 
-```Python
+```python
 appid="a769b53eb26849eba5d5e81ccb381a32"
 
 code = "5ae2ee0d135b47ac806fb822fe5477bd"
@@ -532,7 +532,7 @@ list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
-```PHP
+```php
 /*step 1 通过code获取授权信息*/
 $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
 echo $authorizeResult;
@@ -545,7 +545,7 @@ $result = send($url, $request);
 echo $result
 ```
 
-```Shell
+```shell
 curl http://gw.open.ppdai.com/account/check/{accountname} \
 -d sign="xxx1"
 ```
