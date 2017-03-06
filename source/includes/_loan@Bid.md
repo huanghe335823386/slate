@@ -22,7 +22,7 @@
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -176,7 +176,7 @@ ResultMessage	|String	|失败的消息	|
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -341,7 +341,7 @@ ResultMessage|	String|	失败的消息|
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -462,7 +462,7 @@ debtDealId|	Int	|债转编号|
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥

@@ -25,7 +25,7 @@
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -179,7 +179,7 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥

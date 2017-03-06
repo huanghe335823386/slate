@@ -23,7 +23,7 @@
         System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -191,7 +191,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 }
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -335,7 +335,7 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
         System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -497,7 +497,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥

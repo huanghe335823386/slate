@@ -21,7 +21,7 @@
         System.out.println(String.format("返回结果:%s", result.isSucess() ? OpenApiClient.getRsaCryptoHelper().decryptByPrivateKey(result.getContext()) : result.getErrorMessage()));
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥

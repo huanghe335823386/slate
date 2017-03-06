@@ -21,7 +21,7 @@
 
 ```
 
-```.Net
+```Net
  //应用id
             string Appid = "yourAppid";
             //私钥

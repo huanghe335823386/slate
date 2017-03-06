@@ -20,7 +20,7 @@
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -162,7 +162,7 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -262,7 +262,7 @@ LoanInfos.LastBidTime	|DateTime|	末笔投资时间	|
 LoanInfos.LenderCount	|Int	|投标人数	|
 LoanInfos.AuditingTime	|DateTime|	成交日期	|
 LoanInfos.RemainFunding	|Decimal|	剩余可投金额	|
-LoanInfos.DeadLineTimeOrRemindTimeStr	|String	截止时间	|2016/11/19或者14天15时57分(剩余时间)
+LoanInfos.DeadLNetimeOrRemindTimeStr	|String	截止时间	|2016/11/19或者14天15时57分(剩余时间)
 LoanInfos.CreditCode	|String|	标的等级|
 LoanInfos.ListingId|	Int|	列表编号	|
 LoanInfos.Amount	|Decimal	|借款金额|
@@ -368,7 +368,7 @@ ResultCode	|String	|暂未使用|
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -504,7 +504,7 @@ DebtInfos.CreditCode	|String	|列表等级|
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -675,7 +675,7 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
@@ -828,7 +828,7 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 
 ```
 
-```.Net
+```Net
             //应用id
             string Appid = "yourAppid";
             //私钥
