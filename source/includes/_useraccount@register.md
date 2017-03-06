@@ -3,8 +3,9 @@
 以下接口为用户注册相关接口
 
 ## 注册 (Register)
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -23,7 +24,7 @@
 ```
 
 ```.Net
-//应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -81,6 +82,7 @@ cur http://gw.open.ppdai.com/account/register \
 -d role=4 \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -169,8 +171,9 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 
 
 ## 发送注册验证码(SendSMSRegisterCode)
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -189,7 +192,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 ```
 
 ```.Net
-//应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -243,6 +246,7 @@ curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
 -d devicefp="xxxff" \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -311,8 +315,9 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
 
 
 ## 手机注册验证码注册 (SMSCodeRegister)
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -331,7 +336,7 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
 ```
 
 ```.Net
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -475,7 +480,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 
 ## 验证帐号是否存在 (AccountExist)
 ```Java
- //应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -493,7 +498,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 ```
 
 ```.Net
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";

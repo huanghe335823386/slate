@@ -1,8 +1,9 @@
-# 新版标查询
+# 投标查询
 
 ##  投标列表接口 LoanList
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -20,7 +21,7 @@
 ```
 
 ```.Net
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -142,8 +143,9 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 ```
 
 ## 散标详情批量接口 BatchListingInfos
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -161,7 +163,7 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 ```
 
 ```.Net
-  //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -220,6 +222,7 @@ curl http://gw.open.ppdai.com/invest/loanitems \
 -d listing_ids=[23886149,23886150] \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -346,8 +349,9 @@ ResultCode	|String	|暂未使用|
 
 
 ## 债转列表接口 DebtList
+
 ```Java
- //应用id
+         //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -365,7 +369,7 @@ ResultCode	|String	|暂未使用|
 ```
 
 ```.Net
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -417,6 +421,7 @@ echo $result
 curl http://gw.open.ppdai.com/invest/debts?limit={page_num} \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -480,8 +485,9 @@ DebtInfos.CreditCode	|String	|列表等级|
 
 
 ## 债转详情批量接口 BatchDebtInfos
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -499,7 +505,7 @@ DebtInfos.CreditCode	|String	|列表等级|
 ```
 
 ```.Net
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -557,6 +563,7 @@ curl http://gw.open.ppdai.com/invest/debtitems \
 -d debt_ids=[2594108,2594109] \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -578,11 +585,11 @@ DebtIds|	List|	是	|债转列表IDs|
 
 ```json
 [
-{
-  "DebtIds": [
-    2594108
-  ]
-}
+    {
+      "DebtIds": [
+        2594108
+      ]
+    }
 ]
 ```
 ### Response Parameters
@@ -649,8 +656,9 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 
 
 ## 列表投标详情批量接口 BatchListingBidInfos
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -668,7 +676,7 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 ```
 
 ```.Net
-//应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -725,6 +733,7 @@ curl http://gw.open.ppdai.com/invest/bidlistingitems \
 -d listing_ids=[100001,100002] \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -800,8 +809,9 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 
 
 ## 列表状态查询批量接口 BatchListingStatusInfos
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -819,7 +829,7 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 ```
 
 ```.Net
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -876,6 +886,7 @@ curl http://gw.open.ppdai.com/invest/listing/status \
 -d listing_ids=[100000,100001] \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值

@@ -2,8 +2,9 @@
 提供发标接口
 
 ## 用户信息添加 UserInfoAdd
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -25,7 +26,7 @@
 ```
 
 ```.Net
-//应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -151,8 +152,9 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
 
 
 ## 发标接口 RegAfterPostListing
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -178,7 +180,7 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
 ```
 
 ```.Net
-//应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";

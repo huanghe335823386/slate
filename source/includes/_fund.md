@@ -2,6 +2,7 @@
 资金查询接口
 
 ## 获取用户资金余额 QueryBalance
+
 ```Java
  //应用id
         String appid = "yourAppid";

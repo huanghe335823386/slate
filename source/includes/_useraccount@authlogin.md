@@ -1,8 +1,9 @@
-# 登录相关（Register）
+# 登录相关（AuthLogin）
 
 以下接口为用户登录相关接口
 
 ## 发送登录动态密码 (SendSMSAuthCode)
+
 ```Java
 //应用id
 String appid = "yourappid";
@@ -92,6 +93,7 @@ X-PPD-SIGN	String	|是	|使用私钥对请求报文体进行签名|
 --------- | ------- | -----------|---------|-------
 Mobile|String|是|登录手机号	|15200000001
 DeviceFP|String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e92bf00ae78d31e21e8
+
 > 请求参数示例:
 
 ```json
@@ -105,9 +107,11 @@ DeviceFP|String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e
 
 ### Response Parameters
 参数 | 类型 | 描述| 示例值
+
 --------- |  -----------|---------|-------
 ResultCode|	Int|	0	|返回码
 ResultMessage|	String|	返回信息	|动态注册验证码发送成功
+
 > 返回值示例:
 
 ```json
@@ -120,8 +124,9 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 ```
 
 ### ERROR CODE DESCRIPTION
+
 名称|	描述|	解决方案
---------- | ------- | -----------|---------|-------
+--------- | ------- | -----------
 -1|	内部异常	|请稍后重试或联系客服
 -100001101	|设备指纹不能为空	|请输入设备指纹
 -100001102	|手机号不能为空	|请输入手机号
@@ -144,8 +149,9 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 
 ## 手机动态密码登录(SMSAuthCodeLogin)
+
 ```Java
-//应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -219,6 +225,7 @@ curl http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin \
 -d devicefp="xxxff" \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -236,6 +243,7 @@ X-PPD-SIGN	|String	|是|	使用私钥对请求报文体进行签名|
 Mobile|	String	|是	|注册手机号|	15200000001
 DeviceFP|	String	|是|	设备指纹，对应设备的唯一标识	|9b8b9a1bea324e92bf00ae78d31e21e8
 SMSAuthCode|	String|	是	|动态登录密码	|111111
+
 > 请求参数示例:
 
 ```json
@@ -249,6 +257,7 @@ SMSAuthCode|	String|	是	|动态登录密码	|111111
 ```
 
 ### Response Parameters
+
 参数 | 类型 | 描述| 示例值
 --------- |  -----------|---------|-------
 ResultCode|	Int|	返回码	|0
@@ -257,6 +266,7 @@ RefreshToken|	String	|用户给第三方授权使用刷新令牌,有效期90天|
 ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s|	604799
 OpenID|	String	|用户在第三方平台上的唯一标识	|706762e882f94c809fa588bb262e330f
 AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天|	d70f7da0-a0e2-48cb-86a4-9a229cfce076
+
 ```json
 [
   {
@@ -272,7 +282,7 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 
 ### ERROR CODE DESCRIPTION
 名称|	描述|	解决方案
---------- | ------- | -----------|---------|-------
+--------- | ------- | -----------
 -1	|内部异常	请稍后重试或联系客服
 -100002101|	设备指纹不能为空|	请输入设备指纹
 -100002102|	手机号不能为空	|请输入手机号
@@ -294,9 +304,8 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 ]
 ```
 
-
-
 ## 自动登录接口（AutoLogin）
+
 ```Java
 //应用id
 String appid = "yourappid";
@@ -368,6 +377,7 @@ curl http://gw.open.ppdai.com/auth/LoginService/AutoLogin \
 -d devicefp="xxxff" \
 -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -385,6 +395,7 @@ X-PPD-ACCESSTOKEN|	String|	是	|授权令牌|	8cf65377538741c2ba8add2615a22299
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
 Timestamp	|DateTime	|是	|时间戳	|2016-03-14 19:15:22
+
 > 请求参数示例:
 
 ```json
@@ -417,7 +428,7 @@ UserName|	String	|生成的用户名	|pdu8512415174
 
 ### ERROR CODE DESCRIPTION
 名称|	描述|	解决方案
---------- | ------- | -----------|---------|-------
+--------- | ------- | -----------
 -1|	系统异常|	稍后重试或联系客服
 -100006301|	登录用户信息不存在|	请核对Request.Head中的参数是否正确
 

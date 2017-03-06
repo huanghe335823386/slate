@@ -1,6 +1,9 @@
+# OpenApi
+
 ## OpenID查询用户信息 （QueryUserNameByOpenID）
+
 ```Java
- //应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -19,7 +22,7 @@
 ```
 
 ```.Net
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
