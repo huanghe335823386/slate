@@ -2,67 +2,6 @@
 资金查询接口
 
 ## 获取用户资金余额 QueryBalance
-### Header Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-X-PPD-APPID|	String|	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP	|String|	是|	UTC时间戳	|yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN	|String	|是	|使用私钥对应用ID+时间戳进行签名|
-X-PPD-SIGNVERSION|	Double|	否|	签名验证版本号,最新版本号为1	|1
-X-PPD-SERVICEVERSION	|Double|	否|	服务器版本号,最新版本号为1|	1
-X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
-X-PPD-ACCESSTOKEN|	String	|是|	授权令牌|	8cf65377538741c2ba8add2615a22299
-
-
-### Response Parameters
-参数 | 类型 | 描述| 示例值
---------- |  -----------|---------|-------
-Results	|Int	|	|0
-ResultMessage|	String	|处理信息	|返回文本信息
-Balance|	Json	|账户科目分类及科目金额
-
-> 返回值示例:
-
-```json
-[
-{
-  "Result": 0,
-  "ResultMessage": "",
-  "Balance": [
-    {
-      "AccountCategory": "用户备付金.用户投标锁定",
-      "Balance": 100
-    },
-    {
-      "AccountCategory": "用户备付金.用户现金余额",
-      "Balance": 0
-    },
-    {
-      "AccountCategory": "用户备付金.用户提现锁定",
-      "Balance": 0
-    }
-  ]
-}
-]
-```
-
-### ERROR CODE DESCRIPTION
-名称|	描述|	解决方案
---------- | ------- | -----------
--1	|系统异常信息	|稍后重试或联系客服
-> 异常示例:
-
-```json
-[
-{
-  "Result": -1,
-  "ResultMessage": "系统异常信息",
-  "Balance": null
-}
-]
-```
-
 ```Java
  //应用id
         String appid = "yourAppid";
@@ -133,3 +72,65 @@ echo $result
 curl http://gw.open.ppdai.com/fund/{open_id} \
 -d sign=xxx1
 ```
+
+### Header Parameters
+
+参数 | 类型 | 必填 | 描述| 示例值
+--------- | ------- | -----------|---------|-------
+X-PPD-APPID|	String|	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
+X-PPD-TIMESTAMP	|String|	是|	UTC时间戳	|yyyy-MM-dd HH:mm:ss
+X-PPD-TIMESTAMP-SIGN	|String	|是	|使用私钥对应用ID+时间戳进行签名|
+X-PPD-SIGNVERSION|	Double|	否|	签名验证版本号,最新版本号为1	|1
+X-PPD-SERVICEVERSION	|Double|	否|	服务器版本号,最新版本号为1|	1
+X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
+X-PPD-ACCESSTOKEN|	String	|是|	授权令牌|	8cf65377538741c2ba8add2615a22299
+
+
+### Response Parameters
+参数 | 类型 | 描述| 示例值
+--------- |  -----------|---------|-------
+Results	|Int	|	|0
+ResultMessage|	String	|处理信息	|返回文本信息
+Balance|	Json	|账户科目分类及科目金额
+
+> 返回值示例:
+
+```json
+[
+{
+  "Result": 0,
+  "ResultMessage": "",
+  "Balance": [
+    {
+      "AccountCategory": "用户备付金.用户投标锁定",
+      "Balance": 100
+    },
+    {
+      "AccountCategory": "用户备付金.用户现金余额",
+      "Balance": 0
+    },
+    {
+      "AccountCategory": "用户备付金.用户提现锁定",
+      "Balance": 0
+    }
+  ]
+}
+]
+```
+
+### ERROR CODE DESCRIPTION
+名称|	描述|	解决方案
+--------- | ------- | -----------
+-1	|系统异常信息	|稍后重试或联系客服
+> 异常示例:
+
+```json
+[
+{
+  "Result": -1,
+  "ResultMessage": "系统异常信息",
+  "Balance": null
+}
+]
+```
+

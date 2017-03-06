@@ -3,7 +3,84 @@
 以下接口为用户注册相关接口
 
 ## 注册 (Register)
+```Java
+//应用id
+        String appid = "yourAppid";
+        //私钥
+        String clientPrivateKey = "yourPrivateKey";
+        //公钥
+        String serverPublicKey = "yourPublicKey";
+        //初始化操作
+        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
+        //请求url
+        String url = "http://gw.open.ppdai.com/auth/registerservice/register";
+        Result result = OpenApiClient.send(url
+                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+                , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
+                , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
+        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+```
+
+```.Net
+//应用id
+            string Appid = "yourAppid";
+            //私钥
+            string ClientPrivateKey = "yourPrivateKey";
+            //公钥
+            string ServerPublicKey = "yourPublicKey";
+
+            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+            //请求url
+            String Url = "http://gw.open.ppdai.com/auth/registerservice/register";
+            Result Result = OpenApiClient.Send(Url
+                    , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+                    , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
+                    , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
+            Console.WriteLine(Result);
+```
+
+```Python
+appid="a769b53eb26849eba5d5e81ccb381a32"
+
+code = "5ae2ee0d135b47ac806fb822fe5477bd"
+
+#step 1 授权
+authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+#用户注册接口，提供使用用户的手机、邮箱注册用户
+access_url = "http://gw.open.ppdai.com/auth/registerservice/register"
+data = {
+  "Mobile": "15200000111",
+  "Email": "xxxxxx@ppdai.com",
+  "Role": 12
+}
+sort_data = rsa.sort(data)
+sign = rsa.sign(sort_data)
+list_result = client.send(access_url,json.dumps(data) , appid, sign)
+```
+
+```PHP
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*用户注册接口，提供使用用户的手机、邮箱注册用户*/
+$url = "http://gw.open.ppdai.com/auth/registerservice/register";
+$request = '{
+  "Mobile": "15200000111",
+  "Email": "xxxxxx@ppdai.com",
+  "Role": 12
+}';
+$result = send($url, $request);
+echo $result
+```
+
+```Shell
+cur http://gw.open.ppdai.com/account/register \
+-d account_name=13916818800 \
+-d role=4 \
+-d sign="xxx1"
+```
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -89,152 +166,9 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 ]
 ```
 
-```Java
-//应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/auth/registerservice/register";
-        Result result = OpenApiClient.send(url
-                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
-                , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
-```
-
-```.Net
-//应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
-
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求url
-            String Url = "http://gw.open.ppdai.com/auth/registerservice/register";
-            Result Result = OpenApiClient.Send(Url
-                    , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                    , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
-                    , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
-```
-
-```Python
-appid="a769b53eb26849eba5d5e81ccb381a32"
-
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#用户注册接口，提供使用用户的手机、邮箱注册用户
-access_url = "http://gw.open.ppdai.com/auth/registerservice/register"
-data = {
-  "Mobile": "15200000111",
-  "Email": "xxxxxx@ppdai.com",
-  "Role": 12
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
-```
-
-```PHP
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*用户注册接口，提供使用用户的手机、邮箱注册用户*/
-$url = "http://gw.open.ppdai.com/auth/registerservice/register";
-$request = '{
-  "Mobile": "15200000111",
-  "Email": "xxxxxx@ppdai.com",
-  "Role": 12
-}';
-$result = send($url, $request);
-echo $result
-```
-
-```Shell
-cur http://gw.open.ppdai.com/account/register \
--d account_name=13916818800 \
--d role=4 \
--d sign="xxx1"
-```
 
 ## 发送注册验证码(SendSMSRegisterCode)
-
-### Header Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-X-PPD-APPID|	String|	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP	|String|	是|	UTC时间戳	|yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN	|String	|是	|使用私钥对应用ID+时间戳进行签名|
-X-PPD-SIGNVERSION|	Double|	否|	签名验证版本号,最新版本号为1	|1
-X-PPD-SERVICEVERSION	|Double|	否|	服务器版本号,最新版本号为1|	1
-X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
-
-### Request Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-Mobile	|String|	是	|注册手机号|	15200000001
-DeviceFP|	String	|是|	设备指纹，对应设备的唯一标识	|9b8b9a1bea324e92bf00ae78d31e21e8
-> 请求参数示例:
-
-```json
-    [
-      {
-      "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
-      }
-    ]
-```
-
-
-### Response Parameters
-参数 | 类型 | 描述| 示例值
---------- |  -----------|---------|-------
-ResultCode	|Int|	返回码	|0
-ResultMessage	|String|	动态注册验证码发送成功	|返回信息
-
-> 返回值示例:
-
-```json
-[
- {
- "ResultCode": 0,
-  "ResultMessage": "动态注册验证码发送成功"
-}
-]
-```
-### ERROR CODE DESCRIPTION
-名称|	描述|	解决方案
---------- | ------- | -----------
--1	|内部异常	|请稍后重试或联系客服
--100004101	|设备指纹不能为空	|请输入设备指纹
--100004102	|手机号不能为空	|请输入手机号
--100004301	|当前手机已绑定有效用户	|请更换有效手机号
--100004201	|两次发送短信时间不能低于一分钟	|请稍后重试
--100004202	|一天内发送次数不能超过10次	|请稍后重试
--100004203	|动态注册验证码发送失败	|请稍后重试或联系客服
-> 异常示例:
-
-```json
-[
-{
-   "ResultCode": -1,
-  "ResultMessage": "内部异常"
-}
-]
-```
 ```Java
 //应用id
         String appid = "yourAppid";
@@ -309,9 +243,6 @@ curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
 -d devicefp="xxxff" \
 -d sign="xxx1"
 ```
-
-## 手机注册验证码注册 (SMSCodeRegister)
-
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -327,59 +258,46 @@ X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
 
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
-Mobile	|String	|是|	注册手机号	|15200000001
-DeviceFP|	String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e92bf00ae78d31e21e8
-Code	|String	|是	|验证码	|111111
-Role	|Int	|否	|角色类型:4-借出,8-借入,12-借入借出	|4
+Mobile	|String|	是	|注册手机号|	15200000001
+DeviceFP|	String	|是|	设备指纹，对应设备的唯一标识	|9b8b9a1bea324e92bf00ae78d31e21e8
 > 请求参数示例:
 
 ```json
     [
-     {
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "Code": "111111",
-  "Role": 8
-}
+      {
+      "Mobile": "15200000001",
+  "DeviceFP": "1234567890"
+      }
     ]
 ```
+
 
 ### Response Parameters
 参数 | 类型 | 描述| 示例值
 --------- |  -----------|---------|-------
-ResultCode	|Int|	返回码|	0
-ResultMessage|	String|	返回信息	|手机号不能为空
-OpenID|	String	|用户在第三方平台上的唯一标识|	706762e882f94c809fa588bb262e330f
-AccessToken	|String	|用户给第三方平台的授权访问令牌,有效期7天	|d70f7da0-a0e2-48cb-86a4-9a229cfce076
-RefreshToken|	String	|用户给第三方授权使用刷新令牌,有效期90天	|a21b0472-41bd-4805-b3cc-ec4f792e60bf
-ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|604799
+ResultCode	|Int|	返回码	|0
+ResultMessage	|String|	动态注册验证码发送成功	|返回信息
+
 > 返回值示例:
 
 ```json
 [
  {
-  "ReturnCode": 0,
-  "ReturnMessage": null,
-  "OpenID": "706762e882f94c809fa588bb262e330f",
-  "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
-  "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
-  "ExpiresIn": 604799
+ "ResultCode": 0,
+  "ResultMessage": "动态注册验证码发送成功"
 }
 ]
 ```
 ### ERROR CODE DESCRIPTION
 名称|	描述|	解决方案
 --------- | ------- | -----------
--1	|系统异常	|请稍后重试或联系客服
--100005101	|设备指纹不能为空	|请输入设备指纹
--100005103	|手机号不能为空	|请输入手机号
--100005302	|平台信息错误	|请稍后重试或联系客服
--100005303	|授权失败	|请稍后重试或联系客服
--100005202	|验证码输入错误次数太多，请稍后重试	|请稍后重试
--100005201	|验证码输入错误	|请输入正确的验证码
--100005301	|注册失败	|请稍后重试或联系客服
--100005102	|验证码不能为空	|请输入动态验证码
--100005104	|角色信息错误	|输入正确的角色类型
+-1	|内部异常	|请稍后重试或联系客服
+-100004101	|设备指纹不能为空	|请输入设备指纹
+-100004102	|手机号不能为空	|请输入手机号
+-100004301	|当前手机已绑定有效用户	|请更换有效手机号
+-100004201	|两次发送短信时间不能低于一分钟	|请稍后重试
+-100004202	|一天内发送次数不能超过10次	|请稍后重试
+-100004203	|动态注册验证码发送失败	|请稍后重试或联系客服
 > 异常示例:
 
 ```json
@@ -390,6 +308,9 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 }
 ]
 ```
+
+
+## 手机注册验证码注册 (SMSCodeRegister)
 ```Java
 //应用id
         String appid = "yourAppid";
@@ -472,9 +393,6 @@ curl http://gw.open.ppdai.com/account/{mobile}/smscoderegister \
 -d role=4 \
 -d sign="xxx1"
 ```
-
-## 验证帐号是否存在 (AccountExist)
-
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -490,40 +408,59 @@ X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
 
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
-AccountName|	String	|是	|帐号名称,支持手机\邮箱\自定义帐号	|15200000001
-
+Mobile	|String	|是|	注册手机号	|15200000001
+DeviceFP|	String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e92bf00ae78d31e21e8
+Code	|String	|是	|验证码	|111111
+Role	|Int	|否	|角色类型:4-借出,8-借入,12-借入借出	|4
 > 请求参数示例:
 
 ```json
     [
      {
-  "AccountName": "15200000001"
+  "Mobile": "15200000001",
+  "DeviceFP": "1234567890",
+  "Code": "111111",
+  "Role": 8
 }
     ]
 ```
 
-
 ### Response Parameters
 参数 | 类型 | 描述| 示例值
 --------- |  -----------|---------|-------
-ResultCode	|Int|	返回码	|0
-ResultMessage|	String	|返回信息|	内部异常
-IsExist|	Boolean	|帐号是否存在|	true
+ResultCode	|Int|	返回码|	0
+ResultMessage|	String|	返回信息	|手机号不能为空
+OpenID|	String	|用户在第三方平台上的唯一标识|	706762e882f94c809fa588bb262e330f
+AccessToken	|String	|用户给第三方平台的授权访问令牌,有效期7天	|d70f7da0-a0e2-48cb-86a4-9a229cfce076
+RefreshToken|	String	|用户给第三方授权使用刷新令牌,有效期90天	|a21b0472-41bd-4805-b3cc-ec4f792e60bf
+ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|604799
 > 返回值示例:
 
 ```json
 [
-{
-  "ResultCode": 0,
-  "ResultMessage": null,
-  "IsExist": true
+ {
+  "ReturnCode": 0,
+  "ReturnMessage": null,
+  "OpenID": "706762e882f94c809fa588bb262e330f",
+  "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
+  "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
+  "ExpiresIn": 604799
 }
 ]
 ```
 ### ERROR CODE DESCRIPTION
 名称|	描述|	解决方案
 --------- | ------- | -----------
--1	|内部异常	|请稍后重试或联系客服
+-1	|系统异常	|请稍后重试或联系客服
+-100005101	|设备指纹不能为空	|请输入设备指纹
+-100005103	|手机号不能为空	|请输入手机号
+-100005302	|平台信息错误	|请稍后重试或联系客服
+-100005303	|授权失败	|请稍后重试或联系客服
+-100005202	|验证码输入错误次数太多，请稍后重试	|请稍后重试
+-100005201	|验证码输入错误	|请输入正确的验证码
+-100005301	|注册失败	|请稍后重试或联系客服
+-100005102	|验证码不能为空	|请输入动态验证码
+-100005104	|角色信息错误	|输入正确的角色类型
 > 异常示例:
 
 ```json
@@ -534,6 +471,9 @@ IsExist|	Boolean	|帐号是否存在|	true
 }
 ]
 ```
+
+
+## 验证帐号是否存在 (AccountExist)
 ```Java
  //应用id
         String appid = "yourAppid";
@@ -604,3 +544,63 @@ echo $result
 curl http://gw.open.ppdai.com/account/check/{accountname} \
 -d sign="xxx1"
 ```
+### Header Parameters
+
+参数 | 类型 | 必填 | 描述| 示例值
+--------- | ------- | -----------|---------|-------
+X-PPD-APPID|	String|	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
+X-PPD-TIMESTAMP	|String|	是|	UTC时间戳	|yyyy-MM-dd HH:mm:ss
+X-PPD-TIMESTAMP-SIGN	|String	|是	|使用私钥对应用ID+时间戳进行签名|
+X-PPD-SIGNVERSION|	Double|	否|	签名验证版本号,最新版本号为1	|1
+X-PPD-SERVICEVERSION	|Double|	否|	服务器版本号,最新版本号为1|	1
+X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
+
+### Request Parameters
+
+参数 | 类型 | 必填 | 描述| 示例值
+--------- | ------- | -----------|---------|-------
+AccountName|	String	|是	|帐号名称,支持手机\邮箱\自定义帐号	|15200000001
+
+> 请求参数示例:
+
+```json
+    [
+     {
+  "AccountName": "15200000001"
+}
+    ]
+```
+
+
+### Response Parameters
+参数 | 类型 | 描述| 示例值
+--------- |  -----------|---------|-------
+ResultCode	|Int|	返回码	|0
+ResultMessage|	String	|返回信息|	内部异常
+IsExist|	Boolean	|帐号是否存在|	true
+> 返回值示例:
+
+```json
+[
+{
+  "ResultCode": 0,
+  "ResultMessage": null,
+  "IsExist": true
+}
+]
+```
+### ERROR CODE DESCRIPTION
+名称|	描述|	解决方案
+--------- | ------- | -----------
+-1	|内部异常	|请稍后重试或联系客服
+> 异常示例:
+
+```json
+[
+{
+   "ResultCode": -1,
+  "ResultMessage": "内部异常"
+}
+]
+```
+

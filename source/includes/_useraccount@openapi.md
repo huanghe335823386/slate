@@ -1,70 +1,4 @@
 ## OpenID查询用户信息 （QueryUserNameByOpenID）
-### Header Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-X-PPD-APPID|	String|	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP	|String|	是|	UTC时间戳	|yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN	|String	|是	|使用私钥对应用ID+时间戳进行签名|
-X-PPD-SIGNVERSION|	Double|	否|	签名验证版本号,最新版本号为1	|1
-X-PPD-SERVICEVERSION	|Double|	否|	服务器版本号,最新版本号为1|	1
-X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
-X-PPD-ACCESSTOKEN|	String|	是|	授权令牌	|8cf65377538741c2ba8add2615a22299
-
-### Request Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-OpenID|	string|	是	|OpenID	|befc7084c59845b68c85917b62580a8e1
-
-> 请求参数示例:
-
-```json
-    [
-      {
-     "OpenID": "befc7084c59845b68c85917b62580a8e1"
-      }
-    ]
-```
-
-### Response Parameters
-参数 | 类型 | 描述| 示例值
---------- |  -----------|---------|-------
-ReturnCode	|Int|	返回码 0=成功， -1=失败	|0
-ReturnMessage	|String|	失败的消息	|
-UserName	|String	|加密后的用户名称|	Cjyd2yE0+0mZl7hhAd9j/QdimtdeMH0itSQmkMrDxlLSeLwouRjsPL9jGXcXZ/PmFG6aEHa38m
-
-> 返回值示例:
-
-```json
-[
-  {
-   "ReturnCode": 0,
-  "ReturnMessage": null,
-  "UserName": "Cjyd2yE0+0mZl7hhAd9j/QdimtdeMe0itSUD5iXdAMV0aYDOWIQmkMrDxlLSeLwouRjsPL9jGXc/zPAjoEmBuVhydSXCWwdLazW9tXwXZ/yfA86L2VcQMjaFSJo7b9We/VCbgfxL5salq8QsO29LMb0+kErZzPmFG6aEHa38mrY="
-  }
-]
-```
-
-### ERROR CODE DESCRIPTION
-名称|	描述|	解决方案
---------- | ------- | -----------
--100007101	|OpenID不能为空	|请输入对应的OpenID
--100007302	|未查询到对应用户名|	请核对OpenID
--1	|未知异常|
-
-> 异常示例:
-
-```json
-[
-{
-  "ReturnCode": -100007101,
-  "ReturnMessage": "OpenID不能为空",
-  "UserName": null
-}
-]
-```
-
 ```Java
  //应用id
         String appid = "yourAppid";
@@ -142,3 +76,69 @@ echo $result
 curl http://gw.open.ppdai.com/account/{open_id} \
 -d sign="xxx1"
 ```
+### Header Parameters
+
+参数 | 类型 | 必填 | 描述| 示例值
+--------- | ------- | -----------|---------|-------
+X-PPD-APPID|	String|	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
+X-PPD-TIMESTAMP	|String|	是|	UTC时间戳	|yyyy-MM-dd HH:mm:ss
+X-PPD-TIMESTAMP-SIGN	|String	|是	|使用私钥对应用ID+时间戳进行签名|
+X-PPD-SIGNVERSION|	Double|	否|	签名验证版本号,最新版本号为1	|1
+X-PPD-SERVICEVERSION	|Double|	否|	服务器版本号,最新版本号为1|	1
+X-PPD-SIGN	|String	|是	|使用私钥对请求报文体进行签名|
+X-PPD-ACCESSTOKEN|	String|	是|	授权令牌	|8cf65377538741c2ba8add2615a22299
+
+### Request Parameters
+
+参数 | 类型 | 必填 | 描述| 示例值
+--------- | ------- | -----------|---------|-------
+OpenID|	string|	是	|OpenID	|befc7084c59845b68c85917b62580a8e1
+
+> 请求参数示例:
+
+```json
+    [
+      {
+     "OpenID": "befc7084c59845b68c85917b62580a8e1"
+      }
+    ]
+```
+
+### Response Parameters
+参数 | 类型 | 描述| 示例值
+--------- |  -----------|---------|-------
+ReturnCode	|Int|	返回码 0=成功， -1=失败	|0
+ReturnMessage	|String|	失败的消息	|
+UserName	|String	|加密后的用户名称|	Cjyd2yE0+0mZl7hhAd9j/QdimtdeMH0itSQmkMrDxlLSeLwouRjsPL9jGXcXZ/PmFG6aEHa38m
+
+> 返回值示例:
+
+```json
+[
+  {
+   "ReturnCode": 0,
+  "ReturnMessage": null,
+  "UserName": "Cjyd2yE0+0mZl7hhAd9j/QdimtdeMe0itSUD5iXdAMV0aYDOWIQmkMrDxlLSeLwouRjsPL9jGXc/zPAjoEmBuVhydSXCWwdLazW9tXwXZ/yfA86L2VcQMjaFSJo7b9We/VCbgfxL5salq8QsO29LMb0+kErZzPmFG6aEHa38mrY="
+  }
+]
+```
+
+### ERROR CODE DESCRIPTION
+名称|	描述|	解决方案
+--------- | ------- | -----------
+-100007101	|OpenID不能为空	|请输入对应的OpenID
+-100007302	|未查询到对应用户名|	请核对OpenID
+-1	|未知异常|
+
+> 异常示例:
+
+```json
+[
+{
+  "ReturnCode": -100007101,
+  "ReturnMessage": "OpenID不能为空",
+  "UserName": null
+}
+]
+```
+

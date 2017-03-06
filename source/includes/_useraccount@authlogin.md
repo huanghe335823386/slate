@@ -3,74 +3,6 @@
 以下接口为用户登录相关接口
 
 ## 发送登录动态密码 (SendSMSAuthCode)
-
-### Header Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-X-PPD-APPID	|String	|是|	拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP|	String|	是	|UTC时间戳	|yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN | String	|是	|使用私钥对应用ID+时间戳进行签名	|
-X-PPD-SIGNVERSION	|Double|	否	|签名验证版本号,最新版本号为1	|1
-X-PPD-SERVICEVERSION |  Double |	否	服务器版本号,最新版本号为1	|1
-X-PPD-SIGN	String	|是	|使用私钥对请求报文体进行签名|
-
-
-### Request Parameters
-
-参数 | 类型 | 必填 | 描述| 示例值
---------- | ------- | -----------|---------|-------
-Mobile|String|是|登录手机号	|15200000001
-DeviceFP|String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e92bf00ae78d31e21e8
-> 请求参数示例:
-
-```json
-    [
-      {
-      "Mobile": "15200000001",
-      "DeviceFP": "1234567890"
-      }
-    ]
-```
-
-### Response Parameters
-参数 | 类型 | 描述| 示例值
---------- |  -----------|---------|-------
-ResultCode|	Int|	0	|返回码
-ResultMessage|	String|	返回信息	|动态注册验证码发送成功
-> 返回值示例:
-
-```json
-[
-  {
-    "ResultCode": 0,
-    "ResultMessage": "动态登录密码发送成功"
-  }
-]
-```
-
-### ERROR CODE DESCRIPTION
-名称|	描述|	解决方案
---------- | ------- | -----------|---------|-------
--1|	内部异常	|请稍后重试或联系客服
--100001101	|设备指纹不能为空	|请输入设备指纹
--100001102	|手机号不能为空	|请输入手机号
--100001201	|当前手机未绑定有效用户	|请更换有效手机号
--100001202	|两次发送短信时间间隔不能低于一分钟	|请稍后重试
--100001203	|一天内发送次数不能超过10次	|请稍后重试
--100001204	|动态登录密码发送失败	|请稍后重试或联系客服
--100001205	|已注销，请联系客服	|请联系客服
-> 异常示例:
-
-```json
-[
-  {
-    "ResultCode": -1,
-    "ResultMessage": "内部异常"
-  }
-]
-```
-
 ```Java
 //应用id
 String appid = "yourappid";
@@ -142,34 +74,31 @@ curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
 -d devicefp="xxxff" \
 -d sign="xxx1"
 ```
-
-## 手机动态密码登录(SMSAuthCodeLogin)
-
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
-X-PPD-APPID	|String	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP	|String|	是	|UTC时间戳|	yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN|	String	|是	|使用私钥对应用ID+时间戳进行签名	|
-X-PPD-SIGNVERSION|	Double	|否	|签名验证版本号,最新版本号为1	|1
-X-PPD-SERVICEVERSION|	Double|	否	|服务器版本号,最新版本号为1|	1
-X-PPD-SIGN	|String	|是|	使用私钥对请求报文体进行签名|
+X-PPD-APPID	|String	|是|	拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
+X-PPD-TIMESTAMP|	String|	是	|UTC时间戳	|yyyy-MM-dd HH:mm:ss
+X-PPD-TIMESTAMP-SIGN | String	|是	|使用私钥对应用ID+时间戳进行签名	|
+X-PPD-SIGNVERSION	|Double|	否	|签名验证版本号,最新版本号为1	|1
+X-PPD-SERVICEVERSION |  Double |	否	服务器版本号,最新版本号为1	|1
+X-PPD-SIGN	String	|是	|使用私钥对请求报文体进行签名|
+
+
 ### Request Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
-Mobile|	String	|是	|注册手机号|	15200000001
-DeviceFP|	String	|是|	设备指纹，对应设备的唯一标识	|9b8b9a1bea324e92bf00ae78d31e21e8
-SMSAuthCode|	String|	是	|动态登录密码	|111111
+Mobile|String|是|登录手机号	|15200000001
+DeviceFP|String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e92bf00ae78d31e21e8
 > 请求参数示例:
 
 ```json
     [
       {
       "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "SMSAuthCode": "111111"
+      "DeviceFP": "1234567890"
       }
     ]
 ```
@@ -177,21 +106,15 @@ SMSAuthCode|	String|	是	|动态登录密码	|111111
 ### Response Parameters
 参数 | 类型 | 描述| 示例值
 --------- |  -----------|---------|-------
-ResultCode|	Int|	返回码	|0
-ResultMessage|	String|	返回信息|	手机号不能为空
-RefreshToken|	String	|用户给第三方授权使用刷新令牌,有效期90天|	a21b0472-41bd-4805-b3cc-ec4f792e60bf
-ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s|	604799
-OpenID|	String	|用户在第三方平台上的唯一标识	|706762e882f94c809fa588bb262e330f
-AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天|	d70f7da0-a0e2-48cb-86a4-9a229cfce076
+ResultCode|	Int|	0	|返回码
+ResultMessage|	String|	返回信息	|动态注册验证码发送成功
+> 返回值示例:
+
 ```json
 [
   {
-    "ReturnCode": 0,
-  "ReturnMessage": null,
-  "OpenID": "706762e882f94c809fa588bb262e330f",
-  "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
-  "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
-  "ExpiresIn": 604799
+    "ResultCode": 0,
+    "ResultMessage": "动态登录密码发送成功"
   }
 ]
 ```
@@ -199,16 +122,14 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 ### ERROR CODE DESCRIPTION
 名称|	描述|	解决方案
 --------- | ------- | -----------|---------|-------
--1	|内部异常	请稍后重试或联系客服
--100002101|	设备指纹不能为空|	请输入设备指纹
--100002102|	手机号不能为空	|请输入手机号
--100002103|	动态登录密码不能为空	|请输入动态登录密码
--100002301	|用户手机不存在	|请稍后重试或联系客服
--100002401|	平台信息错误	|请稍后重试或联系客服
--100002402|	授权失败	|请稍后重试或联系客服
--100002202|	动态密码输入错误	|请输入正确的动态密码
--100002201|	验证码不能为空	|请输入动态验证码密码
-
+-1|	内部异常	|请稍后重试或联系客服
+-100001101	|设备指纹不能为空	|请输入设备指纹
+-100001102	|手机号不能为空	|请输入手机号
+-100001201	|当前手机未绑定有效用户	|请更换有效手机号
+-100001202	|两次发送短信时间间隔不能低于一分钟	|请稍后重试
+-100001203	|一天内发送次数不能超过10次	|请稍后重试
+-100001204	|动态登录密码发送失败	|请稍后重试或联系客服
+-100001205	|已注销，请联系客服	|请联系客服
 > 异常示例:
 
 ```json
@@ -220,6 +141,9 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 ]
 ```
 
+
+
+## 手机动态密码登录(SMSAuthCodeLogin)
 ```Java
 //应用id
         String appid = "yourAppid";
@@ -295,51 +219,53 @@ curl http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin \
 -d devicefp="xxxff" \
 -d sign="xxx1"
 ```
-
-## 自动登录接口（AutoLogin）
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
-X-PPD-APPID	|String	|是|	拍拍贷分配给开发者的应用Id|	9f6a4c76e03c441ea0d3b8ff238311a0
-X-PPD-TIMESTAMP	|String|	是	|UTC时间戳	|yyyy-MM-dd HH:mm:ss
-X-PPD-TIMESTAMP-SIGN	|String|	是|	使用私钥对应用ID+时间戳进行签名	|
-X-PPD-SIGNVERSION	|Double|	否|	签名验证版本号,最新版本号为1	|1
-X-PPD-SERVICEVERSION	|Double	|否|	服务器版本号,最新版本号为1	|1
-X-PPD-SIGN|	String|	是|	使用私钥对请求报文体进行签名	|
-X-PPD-ACCESSTOKEN|	String|	是	|授权令牌|	8cf65377538741c2ba8add2615a22299
-
+X-PPD-APPID	|String	是	|拍拍贷分配给开发者的应用Id	|9f6a4c76e03c441ea0d3b8ff238311a0
+X-PPD-TIMESTAMP	|String|	是	|UTC时间戳|	yyyy-MM-dd HH:mm:ss
+X-PPD-TIMESTAMP-SIGN|	String	|是	|使用私钥对应用ID+时间戳进行签名	|
+X-PPD-SIGNVERSION|	Double	|否	|签名验证版本号,最新版本号为1	|1
+X-PPD-SERVICEVERSION|	Double|	否	|服务器版本号,最新版本号为1|	1
+X-PPD-SIGN	|String	|是|	使用私钥对请求报文体进行签名|
 ### Request Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
 --------- | ------- | -----------|---------|-------
-Timestamp	|DateTime	|是	|时间戳	|2016-03-14 19:15:22
+Mobile|	String	|是	|注册手机号|	15200000001
+DeviceFP|	String	|是|	设备指纹，对应设备的唯一标识	|9b8b9a1bea324e92bf00ae78d31e21e8
+SMSAuthCode|	String|	是	|动态登录密码	|111111
 > 请求参数示例:
 
 ```json
     [
       {
-     "Timestamp": "2016-03-14 19:15:22"
+      "Mobile": "15200000001",
+  "DeviceFP": "1234567890",
+  "SMSAuthCode": "111111"
       }
     ]
 ```
+
 ### Response Parameters
 参数 | 类型 | 描述| 示例值
 --------- |  -----------|---------|-------
-ResultCode|	Int	|返回码|	0
-ResultMessage|	String|	返回文本信息|	处理信息
-Token	|String|	AC.PPDAI.COM自动登录用的Token,有效时间180秒	|7RH28R2MRV54
-UserName|	String	|生成的用户名	|pdu8512415174
-
-> 返回值示例:
-
+ResultCode|	Int|	返回码	|0
+ResultMessage|	String|	返回信息|	手机号不能为空
+RefreshToken|	String	|用户给第三方授权使用刷新令牌,有效期90天|	a21b0472-41bd-4805-b3cc-ec4f792e60bf
+ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s|	604799
+OpenID|	String	|用户在第三方平台上的唯一标识	|706762e882f94c809fa588bb262e330f
+AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天|	d70f7da0-a0e2-48cb-86a4-9a229cfce076
 ```json
 [
   {
-   "ResultCode": 0,
-  "ResultMessage": "登录成功",
-  "Token": "7RH28R2MRV54",
-  "UserName": "ppd测试用户"
+    "ReturnCode": 0,
+  "ReturnMessage": null,
+  "OpenID": "706762e882f94c809fa588bb262e330f",
+  "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
+  "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
+  "ExpiresIn": 604799
   }
 ]
 ```
@@ -347,20 +273,30 @@ UserName|	String	|生成的用户名	|pdu8512415174
 ### ERROR CODE DESCRIPTION
 名称|	描述|	解决方案
 --------- | ------- | -----------|---------|-------
--1|	系统异常|	稍后重试或联系客服
--100006301|	登录用户信息不存在|	请核对Request.Head中的参数是否正确
+-1	|内部异常	请稍后重试或联系客服
+-100002101|	设备指纹不能为空|	请输入设备指纹
+-100002102|	手机号不能为空	|请输入手机号
+-100002103|	动态登录密码不能为空	|请输入动态登录密码
+-100002301	|用户手机不存在	|请稍后重试或联系客服
+-100002401|	平台信息错误	|请稍后重试或联系客服
+-100002402|	授权失败	|请稍后重试或联系客服
+-100002202|	动态密码输入错误	|请输入正确的动态密码
+-100002201|	验证码不能为空	|请输入动态验证码密码
 
 > 异常示例:
 
 ```json
 [
-{
-  "ResultCode": -1001,
-  "ResultMessage": "系统异常"
-}
+  {
+    "ResultCode": -1,
+    "ResultMessage": "内部异常"
+  }
 ]
 ```
 
+
+
+## 自动登录接口（AutoLogin）
 ```Java
 //应用id
 String appid = "yourappid";
@@ -432,3 +368,67 @@ curl http://gw.open.ppdai.com/auth/LoginService/AutoLogin \
 -d devicefp="xxxff" \
 -d sign="xxx1"
 ```
+### Header Parameters
+
+参数 | 类型 | 必填 | 描述| 示例值
+--------- | ------- | -----------|---------|-------
+X-PPD-APPID	|String	|是|	拍拍贷分配给开发者的应用Id|	9f6a4c76e03c441ea0d3b8ff238311a0
+X-PPD-TIMESTAMP	|String|	是	|UTC时间戳	|yyyy-MM-dd HH:mm:ss
+X-PPD-TIMESTAMP-SIGN	|String|	是|	使用私钥对应用ID+时间戳进行签名	|
+X-PPD-SIGNVERSION	|Double|	否|	签名验证版本号,最新版本号为1	|1
+X-PPD-SERVICEVERSION	|Double	|否|	服务器版本号,最新版本号为1	|1
+X-PPD-SIGN|	String|	是|	使用私钥对请求报文体进行签名	|
+X-PPD-ACCESSTOKEN|	String|	是	|授权令牌|	8cf65377538741c2ba8add2615a22299
+
+### Request Parameters
+
+参数 | 类型 | 必填 | 描述| 示例值
+--------- | ------- | -----------|---------|-------
+Timestamp	|DateTime	|是	|时间戳	|2016-03-14 19:15:22
+> 请求参数示例:
+
+```json
+    [
+      {
+     "Timestamp": "2016-03-14 19:15:22"
+      }
+    ]
+```
+### Response Parameters
+参数 | 类型 | 描述| 示例值
+--------- |  -----------|---------|-------
+ResultCode|	Int	|返回码|	0
+ResultMessage|	String|	返回文本信息|	处理信息
+Token	|String|	AC.PPDAI.COM自动登录用的Token,有效时间180秒	|7RH28R2MRV54
+UserName|	String	|生成的用户名	|pdu8512415174
+
+> 返回值示例:
+
+```json
+[
+  {
+   "ResultCode": 0,
+  "ResultMessage": "登录成功",
+  "Token": "7RH28R2MRV54",
+  "UserName": "ppd测试用户"
+  }
+]
+```
+
+### ERROR CODE DESCRIPTION
+名称|	描述|	解决方案
+--------- | ------- | -----------|---------|-------
+-1|	系统异常|	稍后重试或联系客服
+-100006301|	登录用户信息不存在|	请核对Request.Head中的参数是否正确
+
+> 异常示例:
+
+```json
+[
+{
+  "ResultCode": -1001,
+  "ResultMessage": "系统异常"
+}
+]
+```
+
