@@ -22,22 +22,7 @@ includes:
   - loan@LoanInfo
   - gps
   - fund
-  - topics
-  - resources
-  - events
-  - users
-  - trade
-  - trade@category
-  - trade@product
-  - trade@sku
-  - trade@order
-  - payment
-  - payment@channel
-  - payment@subscription
-  - account
   - errors
-  - appendix
-
 
 search: true
 ---
