@@ -3,7 +3,7 @@
 
 ## 用户信息添加 UserInfoAdd
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -153,7 +153,7 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
 
 ## 发标接口 RegAfterPostListing
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥

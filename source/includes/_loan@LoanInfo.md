@@ -2,7 +2,7 @@
 
 ##  投标列表接口 LoanList
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -144,7 +144,7 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 
 ## 散标详情批量接口 BatchListingInfos
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -350,7 +350,7 @@ ResultCode	|String	|暂未使用|
 
 ## 债转列表接口 DebtList
 
-```Java
+```java
          //应用id
         String appid = "yourAppid";
         //私钥
@@ -486,7 +486,7 @@ DebtInfos.CreditCode	|String	|列表等级|
 
 ## 债转详情批量接口 BatchDebtInfos
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -657,7 +657,7 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 
 ## 列表投标详情批量接口 BatchListingBidInfos
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -810,7 +810,7 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 
 ## 列表状态查询批量接口 BatchListingStatusInfos
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥

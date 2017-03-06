@@ -2,7 +2,7 @@
 
 ## OpenID查询用户信息 （QueryUserNameByOpenID）
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥

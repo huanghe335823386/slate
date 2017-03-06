@@ -4,7 +4,7 @@
 
 ## 注册 (Register)
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -172,7 +172,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 
 ## 发送注册验证码(SendSMSRegisterCode)
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -316,7 +316,7 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
 
 ## 手机注册验证码注册 (SMSCodeRegister)
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -479,7 +479,7 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 
 
 ## 验证帐号是否存在 (AccountExist)
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥

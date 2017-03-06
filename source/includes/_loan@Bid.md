@@ -2,7 +2,7 @@
 
 ## 投标接口 Bidding
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -153,7 +153,7 @@ ResultMessage	|String	|失败的消息	|
 
 ## 我的投标接口 BidList
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -322,7 +322,7 @@ ResultMessage|	String|	失败的消息|
 
 ## 债转购买接口 BuyDebt
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -443,7 +443,7 @@ debtDealId|	Int	|债转编号|
 
 ## 用户最近投资标的信息 BatchLenderBidList
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥

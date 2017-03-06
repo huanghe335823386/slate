@@ -4,7 +4,7 @@
 
 ## 发送登录动态密码 (SendSMSAuthCode)
 
-```Java
+```java
 //应用id
 String appid = "yourappid";
 //私钥
@@ -150,7 +150,7 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 
 ## 手机动态密码登录(SMSAuthCodeLogin)
 
-```Java
+```java
         //应用id
         String appid = "yourAppid";
         //私钥
@@ -306,7 +306,7 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 
 ## 自动登录接口（AutoLogin）
 
-```Java
+```java
 //应用id
 String appid = "yourappid";
 //私钥

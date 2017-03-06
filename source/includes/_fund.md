@@ -3,7 +3,7 @@
 
 ## 获取用户资金余额 QueryBalance
 
-```Java
+```java
  //应用id
         String appid = "yourAppid";
         //私钥
