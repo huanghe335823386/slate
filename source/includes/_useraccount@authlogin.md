@@ -305,6 +305,7 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 ```
 
 ## 自动登录接口（AutoLogin）
+自动登录接口，调用成功后返回： 用户名：UserName, 自动登录Token。 拿到token后,拼接url:http://ac.ppdai.com/user/authcookie?token=XXXXX&jump=http://www.ppdai.com来将token种入用户的浏览器.其中token为接口中拿到的token,jump为种入token后需要用户跳转的页面
 
 ```java
 //应用id
