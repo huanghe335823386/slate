@@ -149,7 +149,7 @@ ResultMessage	|String	|失败的消息	|
 3005|	已满标	|请重新输入列表编号
 4001|	账户余额不足，请先充值	|请充值或更换投标账号
 
-
+<aside class="notice">需要授权</aside>
 
 ## 我的投标接口 BidList
 
@@ -318,7 +318,7 @@ ResultMessage|	String|	失败的消息|
 ]
 ```
 
-
+<aside class="notice">需要授权</aside>
 
 ## 债转购买接口 BuyDebt
 
@@ -439,7 +439,7 @@ debtDealId|	Int	|债转编号|
 }
 ]
 ```
-
+<aside class="notice">需要授权</aside>
 
 ## 用户最近投资标的信息 BatchLenderBidList
 
@@ -617,4 +617,4 @@ LendersBidsList.Bids.StatusId|	int	|0=流标，1=成功（投标状态)
 ]
 ```
 
-
+<aside class="notice">需要授权</aside>
