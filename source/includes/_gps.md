@@ -148,7 +148,7 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
 ]
 ```
 
-
+<aside class="notice">需要授权</aside>
 
 
 ## 发标接口 RegAfterPostListing
@@ -322,3 +322,4 @@ Content	|String	|预留信息|
 }
 ]
 ```
+<aside class="notice">需要授权</aside>
