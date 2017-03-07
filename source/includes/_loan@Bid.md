@@ -41,46 +41,44 @@
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#投标接口
-access_url = "http://gw.open.ppdai.com/invest/BidService/Bidding"
-access_token = "your_access_token"
-data = {
-  "ListingId": 9575229,
-  "Amount": 150
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
-
+    #step 1 授权
+    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+    #投标接口
+    access_url = "http://gw.open.ppdai.com/invest/BidService/Bidding"
+    access_token = "your_access_token"
+    data = {
+      "ListingId": 9575229,
+      "Amount": 150
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*投标接口*/
-$url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
-$accessToken="yourAccessToken";
-$request = '{
-  "ListingId": 9575229,
-  "Amount": 150
-}';
-$result = send($url, $request,$accessToken);
-echo $result
+    /*step 1 通过code获取授权信息*/
+    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+    echo $authorizeResult;
+    /*投标接口*/
+    $url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
+    $accessToken="yourAccessToken";
+    $request = '{
+      "ListingId": 9575229,
+      "Amount": 150
+    }';
+    $result = send($url, $request,$accessToken);
+    echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/{access_token}/{listing_id}/bid \
--d amount=50 \
--d sign="xxx1" \
+    curl http://gw.open.ppdai.com/invest/{access_token}/{listing_id}/bid \
+    -d amount=50 \
+    -d sign="xxx1" \
 ```
 ### Header Parameters
 
@@ -105,10 +103,10 @@ Amount	|Int|	是	|投标金额|	150
 
 ```json
 [
-{
-  "ListingId": 9575229,
-  "Amount": 150
-}
+    {
+      "ListingId": 9575229,
+      "Amount": 150
+    }
 ]
 ```
 
@@ -125,13 +123,13 @@ ResultMessage	|String	|失败的消息	|
 
 ```json
 [
-{
-  "Result": 0,
-  "ResultMessage": "null",
-  "ListingId": "1123123",
-  "Amount": "150",
-  "ParticipationAmount": "50"
-}
+    {
+      "Result": 0,
+      "ResultMessage": "null",
+      "ListingId": "1123123",
+      "Amount": "150",
+      "ParticipationAmount": "50"
+    }
 ]
 ```
 ### ERROR CODE DESCRIPTION
@@ -198,55 +196,53 @@ ResultMessage	|String	|失败的消息	|
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#我的投标接口
-access_url = "http://gw.open.ppdai.com/invest/BidService/BidList"
-access_token = "your_access_token"
-data = {
-  "ListingId": 9575229,
-  "StartTime": "2016-03-21",
-  "EndTime": "2016-03-21",
-  "PageIndex": 1,
-  "PageSize": 20
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
-
+    #step 1 授权
+    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+    #我的投标接口
+    access_url = "http://gw.open.ppdai.com/invest/BidService/BidList"
+    access_token = "your_access_token"
+    data = {
+      "ListingId": 9575229,
+      "StartTime": "2016-03-21",
+      "EndTime": "2016-03-21",
+      "PageIndex": 1,
+      "PageSize": 20
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*我的投标接口*/
-$url = "http://gw.open.ppdai.com/invest/BidService/BidList";
-$accessToken="yourAccessToken";
-$request = '{
-  "ListingId": 9575229,
-  "StartTime": "2016-03-21",
-  "EndTime": "2016-03-21",
-  "PageIndex": 1,
-  "PageSize": 20
-}';
-$result = send($url, $request,$accessToken);
-echo $result
+    /*step 1 通过code获取授权信息*/
+    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+    echo $authorizeResult;
+    /*我的投标接口*/
+    $url = "http://gw.open.ppdai.com/invest/BidService/BidList";
+    $accessToken="yourAccessToken";
+    $request = '{
+      "ListingId": 9575229,
+      "StartTime": "2016-03-21",
+      "EndTime": "2016-03-21",
+      "PageIndex": 1,
+      "PageSize": 20
+    }';
+    $result = send($url, $request,$accessToken);
+    echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/{access_token}/bid/{listing_id} \
--d start_time="2016-03-21" \
--d end_time="2016-03-21" \
--d page_index=1 \
--d page_size=20 \
--d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/{access_token}/bid/{listing_id} \
+    -d start_time="2016-03-21" \
+    -d end_time="2016-03-21" \
+    -d page_index=1 \
+    -d page_size=20 \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -274,13 +270,13 @@ PageSize|	Int	|否|	每页数	|20
 
 ```json
 [
-{
-  "ListingId": 9575229,
-  "StartTime": "2016-03-21",
-  "EndTime": "2016-03-21",
-  "PageIndex": 1,
-  "PageSize": 20
-}
+    {
+      "ListingId": 9575229,
+      "StartTime": "2016-03-21",
+      "EndTime": "2016-03-21",
+      "PageIndex": 1,
+      "PageSize": 20
+    }
 ]
 ```
 ### Response Parameters
@@ -301,20 +297,20 @@ ResultMessage|	String|	失败的消息|
 
 ```json
 [
-{
-  "Result": 0,
-  "ResultMessage": "null",
-  "TotalPages": "1",
-  "TotalRecord": "20",
-  "BidList": {
-    "Title": "测试使用",
-    "ListingId": "223423",
-    "Months": "10",
-    "Rate": "10",
-    "Amount": "10000",
-    "BidAmount": "80"
-  }
-}
+    {
+      "Result": 0,
+      "ResultMessage": "null",
+      "TotalPages": "1",
+      "TotalRecord": "20",
+      "BidList": {
+        "Title": "测试使用",
+        "ListingId": "223423",
+        "Months": "10",
+        "Rate": "10",
+        "Amount": "10000",
+        "BidAmount": "80"
+      }
+    }
 ]
 ```
 
@@ -359,42 +355,41 @@ ResultMessage|	String|	失败的消息|
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#债转购买接口
-access_url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt"
-access_token = "your_access_token"
-data = {
-  "debtDealId": 38458234
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+    #step 1 授权
+    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+    #债转购买接口
+    access_url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt"
+    access_token = "your_access_token"
+    data = {
+      "debtDealId": 38458234
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*债转购买接口*/
-$url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
-$accessToken="yourAccessToken";
-$request = '{
-  "debtDealId": 38458234
-}';
-$result = send($url, $request,$accessToken);
-echo $result
+    /*step 1 通过code获取授权信息*/
+    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+    echo $authorizeResult;
+    /*债转购买接口*/
+    $url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
+    $accessToken="yourAccessToken";
+    $request = '{
+      "debtDealId": 38458234
+    }';
+    $result = send($url, $request,$accessToken);
+    echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/{access_token}/{debtdeal_id}/debt \
--d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/{access_token}/{debtdeal_id}/debt \
+    -d sign="xxx1"
 ```
 ### Header Parameters
 
@@ -417,9 +412,9 @@ debtDealId	|Int|	是	|债转编号	|3242342
 
 ```json
 [
-{
-  "debtDealId": 38458234
-}
+    {
+      "debtDealId": 38458234
+    }
 ]
 ```
 ### Response Parameters
@@ -432,11 +427,11 @@ debtDealId|	Int	|债转编号|
 
 ```json
 [
-{
-  "Result": 0,
-  "ResultMessage": "null",
-  "debtDealId": "3242342"
-}
+    {
+      "Result": 0,
+      "ResultMessage": "null",
+      "debtDealId": "3242342"
+    }
 ]
 ```
 <aside class="notice">需要授权</aside>
@@ -480,50 +475,49 @@ debtDealId|	Int	|债转编号|
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#（跟投）用户最近投资标的信息（批量）
-access_url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList"
-access_token = "your_access_token"
-data = {
-  "LenderNames": [
-    "fell_2015"
-  ],
-  "TopIndex": 10
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+    #step 1 授权
+    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+    #（跟投）用户最近投资标的信息（批量）
+    access_url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList"
+    access_token = "your_access_token"
+    data = {
+      "LenderNames": [
+        "fell_2015"
+      ],
+      "TopIndex": 10
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*（跟投）用户最近投资标的信息（批量）*/
-$url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
-$accessToken="yourAccessToken";
-$request = '{
-  "LenderNames": [
-    "fell_2015"
-  ],
-  "TopIndex": 10
-}';
-$result = send($url, $request,$accessToken);
-echo $result
+    /*step 1 通过code获取授权信息*/
+    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+    echo $authorizeResult;
+    /*（跟投）用户最近投资标的信息（批量）*/
+    $url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
+    $accessToken="yourAccessToken";
+    $request = '{
+      "LenderNames": [
+        "fell_2015"
+      ],
+      "TopIndex": 10
+    }';
+    $result = send($url, $request,$accessToken);
+    echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/{access_token}/bid?limit={page_num} \
--d lender_names=["fell_2015",""fell_2016"] \
--d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/{access_token}/bid?limit={page_num} \
+    -d lender_names=["fell_2015",""fell_2016"] \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters

@@ -38,43 +38,36 @@
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+        appid="a769b53eb26849eba5d5e81ccb381a32"
+        code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#新版投标列表接口（默认每页2000条）
-access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList"
-data = {
-  "PageIndex": 1,
-  "StartDateTime": "2015-11-11 12:00:00.000"
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+        #新版投标列表接口（默认每页2000条）
+        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList"
+        data = {
+          "PageIndex": 1,
+          "StartDateTime": "2015-11-11 12:00:00.000"
+        }
+        sort_data = rsa.sort(data)
+        sign = rsa.sign(sort_data)
+        list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*新版投标列表接口（默认每页2000条）*/
-$url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
-$request = '{
-  "PageIndex": 1,
-  "StartDateTime": "2015-11-11 12:00:00.000"
-}';
-$result = send($url, $request);
-echo $result
+        /*新版投标列表接口（默认每页2000条）*/
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
+        $request = '{
+          "PageIndex": 1,
+          "StartDateTime": "2015-11-11 12:00:00.000"
+        }';
+        $result = send($url, $request);
+        echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/loans?limit={page_num} \
--d start_time="2015-11-11 12:00:00 000" \
--d sign="xxx1"
+        curl http://gw.open.ppdai.com/invest/loans?limit={page_num} \
+        -d start_time="2015-11-11 12:00:00 000" \
+        -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -99,10 +92,10 @@ StartDateTime	|DateTime|	否	|如果有则查询该时间之后的列表	|如果
 
 ```json
 [
-{
-  "PageIndex": 1,
-  "StartDateTime": "2015-11-11 12:00:00.000"
-}
+    {
+      "PageIndex": 1,
+      "StartDateTime": "2015-11-11 12:00:00.000"
+    }
 ]
 ```
 ### Response Parameters
@@ -123,22 +116,22 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 
 ```json
 [
-{
-  "LoanInfos": [
     {
-      "ListingId": 23886150,
-      "Title": "手机app用户的借款",
-      "CreditCode": "A",
-      "Amount": 1000,
-      "Rate": 12,
-      "Months": 12,
-      "PayWay": 0
+      "LoanInfos": [
+        {
+          "ListingId": 23886150,
+          "Title": "手机app用户的借款",
+          "CreditCode": "A",
+          "Amount": 1000,
+          "Rate": 12,
+          "Months": 12,
+          "PayWay": 0
+        }
+      ],
+      "Result": 1,
+      "ResultMessage": "查询成功",
+      "ResultCode": null
     }
-  ],
-  "Result": 1,
-  "ResultMessage": "查询成功",
-  "ResultCode": null
-}
 ]
 ```
 
@@ -179,48 +172,41 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+        appid="a769b53eb26849eba5d5e81ccb381a32"
+        code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#新版散标详情批量接口（请求列表不大于10）
-access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos"
-data = {
-  "ListingIds": [
-    23886149,
-    23886150
-  ]
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+        #新版散标详情批量接口（请求列表不大于10）
+        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos"
+        data = {
+          "ListingIds": [
+            23886149,
+            23886150
+          ]
+        }
+        sort_data = rsa.sort(data)
+        sign = rsa.sign(sort_data)
+        list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*新版散标详情批量接口（请求列表不大于10）*/
-$url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
-$request = '{
-  "ListingIds": [
-    23886149,
-    23886150
-  ]
-}';
-$result = send($url, $request);
-echo $result
+        /*新版散标详情批量接口（请求列表不大于10）*/
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
+        $request = '{
+          "ListingIds": [
+            23886149,
+            23886150
+          ]
+        }';
+        $result = send($url, $request);
+        echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/loanitems \
--d listing_ids=[23886149,23886150] \
--d sign="xxx1"
+        curl http://gw.open.ppdai.com/invest/loanitems \
+        -d listing_ids=[23886149,23886150] \
+        -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -243,12 +229,12 @@ ListingIds	|List|	是	|列表IDs|
 
 ```json
 [
-{
-  "ListingIds": [
-    23886149,
-    23886150
-  ]
-}
+    {
+      "ListingIds": [
+        23886149,
+        23886150
+      ]
+    }
 ]
 ```
 ### Response Parameters
@@ -385,41 +371,34 @@ ResultCode	|String	|暂未使用|
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+        appid="a769b53eb26849eba5d5e81ccb381a32"
+        code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#新版债转列表接口（默认每页2000条）
-access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList"
-data = {
-  "PageIndex": 1
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+        #新版债转列表接口（默认每页2000条）
+        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList"
+        data = {
+          "PageIndex": 1
+        }
+        sort_data = rsa.sort(data)
+        sign = rsa.sign(sort_data)
+        list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*新版债转列表接口（默认每页2000条）*/
-$url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
-$request = '{
-  "PageIndex": 1
-}';
-$result = send($url, $request);
-echo $result
+        /*新版债转列表接口（默认每页2000条）*/
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
+        $request = '{
+          "PageIndex": 1
+        }';
+        $result = send($url, $request);
+        echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/debts?limit={page_num} \
--d sign="xxx1"
+        curl http://gw.open.ppdai.com/invest/debts?limit={page_num} \
+        -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -443,9 +422,9 @@ StartDateTime|	DateTime	|否	|如果有则查询该时间之后的列表，精�
 
 ```json
 [
-{
-  "PageIndex": 1
-}
+    {
+      "PageIndex": 1
+    }
 ]
 ```
 ### Response Parameters
@@ -465,21 +444,21 @@ DebtInfos.CreditCode	|String	|列表等级|
 
 ```json
 [
-{
-  "DebtInfos": [
     {
-      "DebtdealId": 3314,
-      "OwingNumber": 9,
-      "PriceforSaleRate": 14,
-      "PriceforSale": 37.95,
-      "ListingId": 199878,
-      "CreditCode": "B"
+      "DebtInfos": [
+        {
+          "DebtdealId": 3314,
+          "OwingNumber": 9,
+          "PriceforSaleRate": 14,
+          "PriceforSale": 37.95,
+          "ListingId": 199878,
+          "CreditCode": "B"
+        }
+      ],
+      "Result": 1,
+      "ResultMessage": "",
+      "ResultCode": null
     }
-  ],
-  "Result": 1,
-  "ResultMessage": "",
-  "ResultCode": null
-}
 ]
 ```
 
@@ -522,46 +501,39 @@ DebtInfos.CreditCode	|String	|列表等级|
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+        appid="a769b53eb26849eba5d5e81ccb381a32"
+        code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#新版债转详情批量接口（请求列表不大于20）
-access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos"
-data = {
-  "DebtIds": [
-    2594108
-  ]
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+        #新版债转详情批量接口（请求列表不大于20）
+        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos"
+        data = {
+          "DebtIds": [
+            2594108
+          ]
+        }
+        sort_data = rsa.sort(data)
+        sign = rsa.sign(sort_data)
+        list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*新版债转详情批量接口（请求列表不大于20）*/
-$url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
-$request = '{
-  "DebtIds": [
-    2594108
-  ]
-}';
-$result = send($url, $request);
-echo $result
+        /*新版债转详情批量接口（请求列表不大于20）*/
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
+        $request = '{
+          "DebtIds": [
+            2594108
+          ]
+        }';
+        $result = send($url, $request);
+        echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/debtitems \
--d debt_ids=[2594108,2594109] \
--d sign="xxx1"
+        curl http://gw.open.ppdai.com/invest/debtitems \
+        -d debt_ids=[2594108,2594109] \
+        -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -692,46 +664,39 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+        appid="a769b53eb26849eba5d5e81ccb381a32"
+        code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#新版列表投标详情批量接口（请求列表大小不大于5）
-access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos"
-data = {
-  "ListingIds": [
-    100001
-  ]
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+        #新版列表投标详情批量接口（请求列表大小不大于5）
+        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos"
+        data = {
+          "ListingIds": [
+            100001
+          ]
+        }
+        sort_data = rsa.sort(data)
+        sign = rsa.sign(sort_data)
+        list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*新版列表投标详情批量接口（请求列表大小不大于5）*/
-$url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
-$request = '{
-  "ListingIds": [
-    100001
-  ]
-}';
-$result = send($url, $request);
-echo $result
+        /*新版列表投标详情批量接口（请求列表大小不大于5）*/
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
+        $request = '{
+          "ListingIds": [
+            100001
+          ]
+        }';
+        $result = send($url, $request);
+        echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/bidlistingitems \
--d listing_ids=[100001,100002] \
--d sign="xxx1"
+        curl http://gw.open.ppdai.com/invest/bidlistingitems \
+        -d listing_ids=[100001,100002] \
+        -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -754,11 +719,11 @@ ListingIds	|List	|是|	列表IDs|
 
 ```json
 [
-{
-  "ListingIds": [
-    100001
-  ]
-}
+    {
+      "ListingIds": [
+        100001
+      ]
+    }
 ]
 ```
 ### Response Parameters
@@ -845,46 +810,39 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+        appid="a769b53eb26849eba5d5e81ccb381a32"
+        code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#新版列表状态查询批量接口（请求列表大小不大于20条）
-access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos"
-data ={
-  "ListingIds": [
-    100000
-  ]
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+        #新版列表状态查询批量接口（请求列表大小不大于20条）
+        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos"
+        data ={
+          "ListingIds": [
+            100000
+          ]
+        }
+        sort_data = rsa.sort(data)
+        sign = rsa.sign(sort_data)
+        list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*新版列表状态查询批量接口（请求列表大小不大于20条）*/
-$url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
-$request = '{
-  "ListingIds": [
-    100000
-  ]
-}';
-$result = send($url, $request);
-echo $result
+        /*新版列表状态查询批量接口（请求列表大小不大于20条）*/
+        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
+        $request = '{
+          "ListingIds": [
+            100000
+          ]
+        }';
+        $result = send($url, $request);
+        echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/invest/listing/status \
--d listing_ids=[100000,100001] \
--d sign="xxx1"
+        curl http://gw.open.ppdai.com/invest/listing/status \
+        -d listing_ids=[100000,100001] \
+        -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -908,11 +866,11 @@ ListingIds|	List|	是	|列表IDs|
 
 ```json
 [
-{
-  "ListingIds": [
-    100000
-  ]
-}
+    {
+      "ListingIds": [
+        100000
+      ]
+    }
 ]
 ```
 ### Response Parameters
@@ -928,16 +886,16 @@ Infos.Status|	Int	|0 :流标 1:满标 2: 投标中 3 :借款成功（成功 || �
 
 ```json
 [
-{
-  "Infos": [
     {
-      "ListingId": 100000,
-      "Status": 3
+      "Infos": [
+        {
+          "ListingId": 100000,
+          "Status": 3
+        }
+      ],
+      "Result": 1,
+      "ResultMessage": "查询成功",
+      "ResultCode": null
     }
-  ],
-  "Result": 1,
-  "ResultMessage": "查询成功",
-  "ResultCode": null
-}
 ]
 ```

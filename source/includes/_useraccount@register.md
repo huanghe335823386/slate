@@ -3,24 +3,25 @@
 以下接口为用户注册相关接口
 
 ## 注册 (Register)
+用户注册接口，提供使用用户的手机、邮箱注册用户。成功后返回：用户名，OpenID，AccessToken，RefreshToken，ExpiresIn。
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+            //应用id
+            String appid = "yourAppid";
+            //私钥
+            String clientPrivateKey = "yourPrivateKey";
+            //公钥
+            String serverPublicKey = "yourPublicKey";
+            //初始化操作
+            OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/auth/registerservice/register";
-        Result result = OpenApiClient.send(url
-                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
-                , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+            //请求url
+            String url = "http://gw.open.ppdai.com/auth/registerservice/register";
+            Result result = OpenApiClient.send(url
+                    , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+                    , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
+                    , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
+            System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
 ```csharp
@@ -42,45 +43,39 @@
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+            appid="a769b53eb26849eba5d5e81ccb381a32"
+            code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#用户注册接口，提供使用用户的手机、邮箱注册用户
-access_url = "http://gw.open.ppdai.com/auth/registerservice/register"
-data = {
-  "Mobile": "15200000111",
-  "Email": "xxxxxx@ppdai.com",
-  "Role": 12
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+            #用户注册接口，提供使用用户的手机、邮箱注册用户
+            access_url = "http://gw.open.ppdai.com/auth/registerservice/register"
+            data = {
+              "Mobile": "15200000111",
+              "Email": "xxxxxx@ppdai.com",
+              "Role": 12
+            }
+            sort_data = rsa.sort(data)
+            sign = rsa.sign(sort_data)
+            list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*用户注册接口，提供使用用户的手机、邮箱注册用户*/
-$url = "http://gw.open.ppdai.com/auth/registerservice/register";
-$request = '{
-  "Mobile": "15200000111",
-  "Email": "xxxxxx@ppdai.com",
-  "Role": 12
-}';
-$result = send($url, $request);
-echo $result
+
+            /*用户注册接口，提供使用用户的手机、邮箱注册用户*/
+            $url = "http://gw.open.ppdai.com/auth/registerservice/register";
+            $request = '{
+              "Mobile": "15200000111",
+              "Email": "xxxxxx@ppdai.com",
+              "Role": 12
+            }';
+            $result = send($url, $request);
+            echo $result
 ```
 
 ```shell
-cur http://gw.open.ppdai.com/account/register \
--d account_name=13916818800 \
--d role=4 \
--d sign="xxx1"
+            cur http://gw.open.ppdai.com/account/register \
+            -d account_name=13916818800 \
+            -d role=4 \
+            -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -107,9 +102,9 @@ Role	|Int	|是	|用户角色：借出者-4，借入者-8，借入借出者-12	|1
 ```json
     [
       {
-       "Mobile": "15200000111",
-  "Email": "xxxxxx@ppdai.com",
-  "Role": 12
+          "Mobile": "15200000111",
+          "Email": "xxxxxx@ppdai.com",
+          "Role": 12
       }
     ]
 ```
@@ -129,14 +124,14 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 ```json
 [
  {
-  "ReturnCode": 0,
-  "ReturnMessage": null,
-  "UserName": "pdu8512415174",
-  "OpenID": "706762e882f94c809fa588bb262e330f",
-  "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
-  "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
-  "ExpiresIn": 604799
-}
+      "ReturnCode": 0,
+      "ReturnMessage": null,
+      "UserName": "pdu8512415174",
+      "OpenID": "706762e882f94c809fa588bb262e330f",
+      "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
+      "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
+      "ExpiresIn": 604799
+  }
 ]
 ```
 ### ERROR CODE DESCRIPTION
@@ -161,10 +156,10 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 
 ```json
 [
-{
-  "ReturnCode": -1,
-  "ReturnMessage": "系统异常"
-}
+    {
+      "ReturnCode": -1,
+      "ReturnMessage": "系统异常"
+    }
 ]
 ```
 
@@ -209,42 +204,36 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+            appid="a769b53eb26849eba5d5e81ccb381a32"
+            code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#发送注册验证码
-access_url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode"
-data = {
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+            #发送注册验证码
+            access_url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode"
+            data = {
+              "Mobile": "15200000001",
+              "DeviceFP": "1234567890"
+            }
+            sort_data = rsa.sort(data)
+            sign = rsa.sign(sort_data)
+            list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*发送注册验证码*/
-$url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
-$request = '{
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
-}';
-$result = send($url, $request);
-echo $result
+
+            /*发送注册验证码*/
+            $url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
+            $request = '{
+              "Mobile": "15200000001",
+              "DeviceFP": "1234567890"
+            }';
+            $result = send($url, $request);
+            echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
--d devicefp="xxxff" \
--d sign="xxx1"
+            curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
+            -d devicefp="xxxff" \
+            -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -269,8 +258,8 @@ DeviceFP|	String	|是|	设备指纹，对应设备的唯一标识	|9b8b9a1bea324
 ```json
     [
       {
-      "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
+        "Mobile": "15200000001",
+        "DeviceFP": "1234567890"
       }
     ]
 ```
@@ -287,9 +276,9 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
 ```json
 [
  {
- "ResultCode": 0,
-  "ResultMessage": "动态注册验证码发送成功"
-}
+    "ResultCode": 0,
+    "ResultMessage": "动态注册验证码发送成功"
+ }
 ]
 ```
 ### ERROR CODE DESCRIPTION
@@ -306,10 +295,10 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
 
 ```json
 [
-{
-   "ResultCode": -1,
-  "ResultMessage": "内部异常"
-}
+    {
+      "ResultCode": -1,
+      "ResultMessage": "内部异常"
+    }
 ]
 ```
 
@@ -354,49 +343,43 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+            appid="a769b53eb26849eba5d5e81ccb381a32"
+            code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#手机注册验证码注册
-access_url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister"
-data = {
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "Code": "111111",
-  "Role": 8
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+            #手机注册验证码注册
+            access_url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister"
+            data = {
+              "Mobile": "15200000001",
+              "DeviceFP": "1234567890",
+              "Code": "111111",
+              "Role": 8
+            }
+            sort_data = rsa.sort(data)
+            sign = rsa.sign(sort_data)
+            list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*手机注册验证码注册*/
-$url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
-$request = '{
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "Code": "111111",
-  "Role": 8
-}';
-$result = send($url, $request);
-echo $result
+
+            /*手机注册验证码注册*/
+            $url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
+            $request = '{
+              "Mobile": "15200000001",
+              "DeviceFP": "1234567890",
+              "Code": "111111",
+              "Role": 8
+            }';
+            $result = send($url, $request);
+            echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/account/{mobile}/smscoderegister \
--d devicefp="xxxff" \
--d code=1100 \
--d role=4 \
--d sign="xxx1"
+            curl http://gw.open.ppdai.com/account/{mobile}/smscoderegister \
+            -d devicefp="xxxff" \
+            -d code=1100 \
+            -d role=4 \
+            -d sign="xxx1"
 ```
 ### Header Parameters
 
@@ -422,11 +405,11 @@ Role	|Int	|否	|角色类型:4-借出,8-借入,12-借入借出	|4
 ```json
     [
      {
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "Code": "111111",
-  "Role": 8
-}
+          "Mobile": "15200000001",
+          "DeviceFP": "1234567890",
+          "Code": "111111",
+          "Role": 8
+      }
     ]
 ```
 
@@ -444,13 +427,13 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 ```json
 [
  {
-  "ReturnCode": 0,
-  "ReturnMessage": null,
-  "OpenID": "706762e882f94c809fa588bb262e330f",
-  "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
-  "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
-  "ExpiresIn": 604799
-}
+      "ReturnCode": 0,
+      "ReturnMessage": null,
+      "OpenID": "706762e882f94c809fa588bb262e330f",
+      "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
+      "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
+      "ExpiresIn": 604799
+  }
 ]
 ```
 ### ERROR CODE DESCRIPTION
@@ -470,30 +453,30 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 
 ```json
 [
-{
-   "ResultCode": -1,
-  "ResultMessage": "内部异常"
-}
+    {
+       "ResultCode": -1,
+       "ResultMessage": "内部异常"
+    }
 ]
 ```
 
 
 ## 验证帐号是否存在 (AccountExist)
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+            //应用id
+            String appid = "yourAppid";
+            //私钥
+            String clientPrivateKey = "yourPrivateKey";
+            //公钥
+            String serverPublicKey = "yourPublicKey";
+            //初始化操作
+            OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
-        Result result = OpenApiClient.send(url
-                , new PropertyObject("AccountName", "15200000001", ValueTypeEnum.String));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+            //请求url
+            String url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
+            Result result = OpenApiClient.send(url
+                    , new PropertyObject("AccountName", "15200000001", ValueTypeEnum.String));
+            System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
@@ -514,41 +497,36 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+            appid="a769b53eb26849eba5d5e81ccb381a32"
+            code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#验证帐号是否存在
-access_url = "http://gw.open.ppdai.com/auth/registerservice/accountexist"
-data = {
-  "AccountName": "15200000001"
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+            #验证帐号是否存在
+            access_url = "http://gw.open.ppdai.com/auth/registerservice/accountexist"
+            data = {
+              "AccountName": "15200000001"
+            }
+            sort_data = rsa.sort(data)
+            sign = rsa.sign(sort_data)
+            list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*验证帐号是否存在*/
-$url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
-$request = '{
-  "AccountName": "15200000001"
-}';
-$result = send($url, $request);
-echo $result
+
+            /*验证帐号是否存在*/
+            $url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
+            $request = '{
+              "AccountName": "15200000001"
+            }';
+            $result = send($url, $request);
+            echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/account/check/{accountname} \
--d sign="xxx1"
+            curl http://gw.open.ppdai.com/account/check/{accountname} \
+            -d sign="xxx1"
 ```
+
 ### Header Parameters
 
 参数 | 类型 | 必填 | 描述| 示例值
@@ -571,8 +549,8 @@ AccountName|	String	|是	|帐号名称,支持手机\邮箱\自定义帐号	|1520
 ```json
     [
      {
-  "AccountName": "15200000001"
-}
+        "AccountName": "15200000001"
+     }
     ]
 ```
 
@@ -587,11 +565,11 @@ IsExist|	Boolean	|帐号是否存在|	true
 
 ```json
 [
-{
-  "ResultCode": 0,
-  "ResultMessage": null,
-  "IsExist": true
-}
+    {
+      "ResultCode": 0,
+      "ResultMessage": null,
+      "IsExist": true
+    }
 ]
 ```
 ### ERROR CODE DESCRIPTION
@@ -602,10 +580,10 @@ IsExist|	Boolean	|帐号是否存在|	true
 
 ```json
 [
-{
-   "ResultCode": -1,
-  "ResultMessage": "内部异常"
-}
+    {
+      "ResultCode": -1,
+      "ResultMessage": "内部异常"
+    }
 ]
 ```
 

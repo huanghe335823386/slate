@@ -5,75 +5,69 @@
 ## 发送登录动态密码 (SendSMSAuthCode)
 
 ```java
-//应用id
-String appid = "yourappid";
-//私钥
-String clientPrivateKey = "yourclientprovatekey";
-//公钥
-String serverPublicKey = "publickey";
-//请求url
-String url = "http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode";
-try {
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
-    Result result = OpenApiClient.send(url
-            , new PropertyObject("Mobile", "13900000000", ValueTypeEnum.String)
-            , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
-} catch (Exception e) {
-    e.printStackTrace();
-}
+            //应用id
+            String appid = "yourappid";
+            //私钥
+            String clientPrivateKey = "yourclientprovatekey";
+            //公钥
+            String serverPublicKey = "publickey";
+            //请求url
+            String url = "http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode";
+            try {
+                OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+                Result result = OpenApiClient.send(url
+                        , new PropertyObject("Mobile", "13900000000", ValueTypeEnum.String)
+                        , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
+                System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 ```
 
 ```csharp
-//应用id
-string Appid = "yourAppid";
-//私钥
-string ClientPrivateKey = "yourPrivateKey";
-//公钥
-string ServerPublicKey = "yourPublicKey";
-//请求Url
-string Url = "http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode";
-OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-Result Result = OpenApiClient.Send(Url, new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String), new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
-Console.WriteLine(Result);
+            //应用id
+            string Appid = "yourAppid";
+            //私钥
+            string ClientPrivateKey = "yourPrivateKey";
+            //公钥
+            string ServerPublicKey = "yourPublicKey";
+            //请求Url
+            string Url = "http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode";
+            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+            Result Result = OpenApiClient.Send(Url, new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String), new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
+            Console.WriteLine(Result);
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+            appid="a769b53eb26849eba5d5e81ccb381a32"
+            code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-access_url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode"
-data = {
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+            access_url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode"
+            data = {
+              "Mobile": "15200000001",
+              "DeviceFP": "1234567890"
+            }
+            sort_data = rsa.sort(data)
+            sign = rsa.sign(sort_data)
+            list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*发送注册验证码*/
-$url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
-$request = '{
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
-}';
-$result = send($url, $request);
-echo $result
+
+            /*发送注册验证码*/
+            $url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
+            $request = '{
+              "Mobile": "15200000001",
+              "DeviceFP": "1234567890"
+            }';
+            $result = send($url, $request);
+            echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
--d devicefp="xxxff" \
--d sign="xxx1"
+            curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
+            -d devicefp="xxxff" \
+            -d sign="xxx1"
 ```
 ### Header Parameters
 
@@ -99,8 +93,8 @@ DeviceFP|String	|是	|设备指纹，对应设备的唯一标识|	9b8b9a1bea324e
 ```json
     [
       {
-      "Mobile": "15200000001",
-      "DeviceFP": "1234567890"
+          "Mobile": "15200000001",
+          "DeviceFP": "1234567890"
       }
     ]
 ```
@@ -151,79 +145,73 @@ ResultMessage|	String|	返回信息	|动态注册验证码发送成功
 ## 手机动态密码登录(SMSAuthCodeLogin)
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+                //应用id
+                String appid = "yourAppid";
+                //私钥
+                String clientPrivateKey = "yourPrivateKey";
+                //公钥
+                String serverPublicKey = "yourPublicKey";
+                //初始化操作
+                OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin";
-        Result result = OpenApiClient.send(url
-                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
-                , new PropertyObject("SMSAuthCode", "111111", ValueTypeEnum.String));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+                //请求url
+                String url = "http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin";
+                Result result = OpenApiClient.send(url
+                        , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+                        , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
+                        , new PropertyObject("SMSAuthCode", "111111", ValueTypeEnum.String));
+                System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
 ```csharp
-//应用id
-string Appid = "yourAppid";
-//私钥
-string ClientPrivateKey = "yourPrivateKey";
-//公钥
-string ServerPublicKey = "yourPublicKey";
-//请求Url
-string Url = "http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode";
-OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-Result Result = OpenApiClient.Send(Url
-                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
-                , new PropertyObject("SMSAuthCode", "111111", ValueTypeEnum.String));
-Console.WriteLine(Result);
+                //应用id
+                string Appid = "yourAppid";
+                //私钥
+                string ClientPrivateKey = "yourPrivateKey";
+                //公钥
+                string ServerPublicKey = "yourPublicKey";
+                //请求Url
+                string Url = "http://gw.open.ppdai.com/auth/authservice/sendsmsauthcode";
+                OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+                Result Result = OpenApiClient.Send(Url
+                                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+                                , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
+                                , new PropertyObject("SMSAuthCode", "111111", ValueTypeEnum.String));
+                Console.WriteLine(Result);
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+                appid="a769b53eb26849eba5d5e81ccb381a32"
+                code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-access_url = "http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin"
-data = {
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "SMSAuthCode": "111111"
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+                access_url = "http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin"
+                data = {
+                  "Mobile": "15200000001",
+                  "DeviceFP": "1234567890",
+                  "SMSAuthCode": "111111"
+                }
+                sort_data = rsa.sort(data)
+                sign = rsa.sign(sort_data)
+                list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-$url = "http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin";
-$request = '{
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "SMSAuthCode": "111111"
-}';
-$result = send($url, $request);
-echo $result
+
+                $url = "http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin";
+                $request = '{
+                  "Mobile": "15200000001",
+                  "DeviceFP": "1234567890",
+                  "SMSAuthCode": "111111"
+                }';
+                $result = send($url, $request);
+                echo $result
 
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin \
--d devicefp="xxxff" \
--d sign="xxx1"
+                curl http://gw.open.ppdai.com/open/oauthservice/smsauthcodelogin \
+                -d devicefp="xxxff" \
+                -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -249,9 +237,9 @@ SMSAuthCode|	String|	是	|动态登录密码	|111111
 ```json
     [
       {
-      "Mobile": "15200000001",
-  "DeviceFP": "1234567890",
-  "SMSAuthCode": "111111"
+          "Mobile": "15200000001",
+          "DeviceFP": "1234567890",
+          "SMSAuthCode": "111111"
       }
     ]
 ```
@@ -270,12 +258,12 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 ```json
 [
   {
-    "ReturnCode": 0,
-  "ReturnMessage": null,
-  "OpenID": "706762e882f94c809fa588bb262e330f",
-  "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
-  "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
-  "ExpiresIn": 604799
+      "ReturnCode": 0,
+      "ReturnMessage": null,
+      "OpenID": "706762e882f94c809fa588bb262e330f",
+      "AccessToken": "d70f7da0-a0e2-48cb-86a4-9a229cfce076",
+      "RefreshToken": "a21b0472-41bd-4805-b3cc-ec4f792e60bf",
+      "ExpiresIn": 604799
   }
 ]
 ```
@@ -308,75 +296,69 @@ AccessToken|	String|	用户给第三方平台的授权访问令牌,有效期7天
 自动登录接口，调用成功后返回： 用户名：UserName, 自动登录Token。 拿到token后,拼接url:http://ac.ppdai.com/user/authcookie?token=XXXXX&jump=http://www.ppdai.com来将token种入用户的浏览器.其中token为接口中拿到的token,jump为种入token后需要用户跳转的页面
 
 ```java
-//应用id
-String appid = "yourappid";
-//私钥
-String clientPrivateKey = "yourclientprovatekey";
-//公钥
-String serverPublicKey = "publickey";
-//请求url
-String url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin";
-try {
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
-    Result result = OpenApiClient.send(url
-            , new PropertyObject("Mobile", "13900000000", ValueTypeEnum.String)
-            , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
-} catch (Exception e) {
-    e.printStackTrace();
-}
+        //应用id
+        String appid = "yourappid";
+        //私钥
+        String clientPrivateKey = "yourclientprovatekey";
+        //公钥
+        String serverPublicKey = "publickey";
+        //请求url
+        String url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin";
+        try {
+            OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+            Result result = OpenApiClient.send(url
+                    , new PropertyObject("Mobile", "13900000000", ValueTypeEnum.String)
+                    , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
+            System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 ```
 
 ```csharp
-//应用id
-string Appid = "yourAppid";
-//私钥
-string ClientPrivateKey = "yourPrivateKey";
-//公钥
-string ServerPublicKey = "yourPublicKey";
-//请求Url
-string Url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin";
-OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-Result Result = OpenApiClient.Send(Url, new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String), new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
-Console.WriteLine(Result);
+        //应用id
+        string Appid = "yourAppid";
+        //私钥
+        string ClientPrivateKey = "yourPrivateKey";
+        //公钥
+        string ServerPublicKey = "yourPublicKey";
+        //请求Url
+        string Url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin";
+        OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+        Result Result = OpenApiClient.Send(Url, new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String), new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
+        Console.WriteLine(Result);
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+        appid="a769b53eb26849eba5d5e81ccb381a32"
+        code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-access_url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin"
-data = {
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign)
+        access_url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin"
+        data = {
+          "Mobile": "15200000001",
+          "DeviceFP": "1234567890"
+        }
+        sort_data = rsa.sort(data)
+        sign = rsa.sign(sort_data)
+        list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*发送注册验证码*/
-$url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin";
-$request = '{
-  "Mobile": "15200000001",
-  "DeviceFP": "1234567890"
-}';
-$result = send($url, $request);
-echo $result
+
+        /*发送注册验证码*/
+        $url = "http://gw.open.ppdai.com/auth/LoginService/AutoLogin";
+        $request = '{
+          "Mobile": "15200000001",
+          "DeviceFP": "1234567890"
+        }';
+        $result = send($url, $request);
+        echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/auth/LoginService/AutoLogin \
--d devicefp="xxxff" \
--d sign="xxx1"
+        curl http://gw.open.ppdai.com/auth/LoginService/AutoLogin \
+        -d devicefp="xxxff" \
+        -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -402,7 +384,7 @@ Timestamp	|DateTime	|是	|时间戳	|2016-03-14 19:15:22
 ```json
     [
       {
-     "Timestamp": "2016-03-14 19:15:22"
+         "Timestamp": "2016-03-14 19:15:22"
       }
     ]
 ```
@@ -419,10 +401,10 @@ UserName|	String	|生成的用户名	|pdu8512415174
 ```json
 [
   {
-   "ResultCode": 0,
-  "ResultMessage": "登录成功",
-  "Token": "7RH28R2MRV54",
-  "UserName": "ppd测试用户"
+      "ResultCode": 0,
+      "ResultMessage": "登录成功",
+      "Token": "7RH28R2MRV54",
+      "UserName": "ppd测试用户"
   }
 ]
 ```
@@ -437,10 +419,10 @@ UserName|	String	|生成的用户名	|pdu8512415174
 
 ```json
 [
-{
-  "ResultCode": -1001,
-  "ResultMessage": "系统异常"
-}
+    {
+      "ResultCode": -1001,
+      "ResultMessage": "系统异常"
+    }
 ]
 ```
 <aside class="notice">需要授权</aside>

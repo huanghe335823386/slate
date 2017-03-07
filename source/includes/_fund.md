@@ -4,7 +4,7 @@
 ## 获取用户资金余额 QueryBalance
 
 ```java
- //应用id
+        //应用id
         String appid = "yourAppid";
         //私钥
         String clientPrivateKey = "yourPrivateKey";
@@ -22,7 +22,7 @@
 ```
 
 ```csharp
- //应用id
+            //应用id
             string Appid = "yourAppid";
             //私钥
             string ClientPrivateKey = "yourPrivateKey";
@@ -38,40 +38,39 @@
 ```
 
 ```python
-appid="a769b53eb26849eba5d5e81ccb381a32"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-code = "5ae2ee0d135b47ac806fb822fe5477bd"
-
-#step 1 授权
-authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-#获取用户资金余额
-access_url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance"
-access_token = "your_access_token"
-data = {
-}
-sort_data = rsa.sort(data)
-sign = rsa.sign(sort_data)
-list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+    #step 1 授权
+    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+    #获取用户资金余额
+    access_url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance"
+    access_token = "your_access_token"
+    data = {
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-/*step 1 通过code获取授权信息*/
-$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-echo $authorizeResult;
-/*获取用户资金余额*/
-$url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
-$accessToken="yourAccessToken";
-$request = '{
-}';
-$result = send($url, $request,$accessToken);
-echo $result
+    /*step 1 通过code获取授权信息*/
+    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+    echo $authorizeResult;
+    /*获取用户资金余额*/
+    $url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
+    $accessToken="yourAccessToken";
+    $request = '{
+    }';
+    $result = send($url, $request,$accessToken);
+    echo $result
 ```
 
 ```shell
-curl http://gw.open.ppdai.com/fund/{open_id} \
--d sign=xxx1
+    curl http://gw.open.ppdai.com/fund/{open_id} \
+    -d sign=xxx1
 ```
 
 ### Header Parameters
@@ -98,24 +97,24 @@ Balance|	Json	|账户科目分类及科目金额
 
 ```json
 [
-{
-  "Result": 0,
-  "ResultMessage": "",
-  "Balance": [
     {
-      "AccountCategory": "用户备付金.用户投标锁定",
-      "Balance": 100
-    },
-    {
-      "AccountCategory": "用户备付金.用户现金余额",
-      "Balance": 0
-    },
-    {
-      "AccountCategory": "用户备付金.用户提现锁定",
-      "Balance": 0
+      "Result": 0,
+      "ResultMessage": "",
+      "Balance": [
+        {
+          "AccountCategory": "用户备付金.用户投标锁定",
+          "Balance": 100
+        },
+        {
+          "AccountCategory": "用户备付金.用户现金余额",
+          "Balance": 0
+        },
+        {
+          "AccountCategory": "用户备付金.用户提现锁定",
+          "Balance": 0
+        }
+      ]
     }
-  ]
-}
 ]
 ```
 
@@ -127,11 +126,11 @@ Balance|	Json	|账户科目分类及科目金额
 
 ```json
 [
-{
-  "Result": -1,
-  "ResultMessage": "系统异常信息",
-  "Balance": null
-}
+    {
+      "Result": -1,
+      "ResultMessage": "系统异常信息",
+      "Balance": null
+    }
 ]
 ```
 
