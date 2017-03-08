@@ -3,41 +3,41 @@
 ## 投标接口 Bidding
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        String accessToken = "accessToken";
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
-        Result result = OpenApiClient.send(url, accessToken,
-                new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-                new PropertyObject("Amount",150, ValueTypeEnum.Double));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    String accessToken = "accessToken";
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
+    Result result = OpenApiClient.send(url, accessToken,
+            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+            new PropertyObject("Amount",150, ValueTypeEnum.Double));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            string AccessToken = "accessToken";
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
-            Result Result = OpenApiClient.Send(Url, AccessToken,
-                    new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-                    new PropertyObject("Amount", 150, ValueTypeEnum.Double));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    string AccessToken = "accessToken";
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
+    Result Result = OpenApiClient.Send(Url, AccessToken,
+            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+            new PropertyObject("Amount", 150, ValueTypeEnum.Double));
+    Console.WriteLine(Result);
 ```
 
 ```python
@@ -152,47 +152,47 @@ ResultMessage	|String	|失败的消息	|
 ## 我的投标接口 BidList
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        String accessToken = "accessToken";
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/BidService/BidList";
-        Result result = OpenApiClient.send(url, accessToken,
-                new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-                new PropertyObject("StartTime","2016-03-21", ValueTypeEnum.DateTime),
-                new PropertyObject("EndTime","2016-03-21", ValueTypeEnum.DateTime),
-                new PropertyObject("PageIndex",1, ValueTypeEnum.Int32),
-                new PropertyObject("PageSize",20, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    String accessToken = "accessToken";
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/BidService/BidList";
+    Result result = OpenApiClient.send(url, accessToken,
+            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+            new PropertyObject("StartTime","2016-03-21", ValueTypeEnum.DateTime),
+            new PropertyObject("EndTime","2016-03-21", ValueTypeEnum.DateTime),
+            new PropertyObject("PageIndex",1, ValueTypeEnum.Int32),
+            new PropertyObject("PageSize",20, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            string AccessToken = "accessToken";
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/BidService/BidList";
-            Result Result = OpenApiClient.Send(Url, AccessToken,
-                    new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-                    new PropertyObject("StartTime", "2016-03-21", ValueTypeEnum.DateTime),
-                    new PropertyObject("EndTime", "2016-03-21", ValueTypeEnum.DateTime),
-                    new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
-                    new PropertyObject("PageSize", 20, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    string AccessToken = "accessToken";
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/BidService/BidList";
+    Result Result = OpenApiClient.Send(Url, AccessToken,
+            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+            new PropertyObject("StartTime", "2016-03-21", ValueTypeEnum.DateTime),
+            new PropertyObject("EndTime", "2016-03-21", ValueTypeEnum.DateTime),
+            new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
+            new PropertyObject("PageSize", 20, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python
@@ -319,39 +319,39 @@ ResultMessage|	String|	失败的消息|
 ## 债转购买接口 BuyDebt
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        String accessToken = "accessToken";
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
-        Result result = OpenApiClient.send(url, accessToken,
-                new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    String accessToken = "accessToken";
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
+    Result result = OpenApiClient.send(url, accessToken,
+            new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            string AccessToken = "accessToken";
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
-            Result Result = OpenApiClient.Send(Url, AccessToken,
-                    new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    string AccessToken = "accessToken";
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
+    Result Result = OpenApiClient.Send(Url, AccessToken,
+            new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python
@@ -439,39 +439,39 @@ debtDealId|	Int	|债转编号|
 ## 用户最近投资标的信息 BatchLenderBidList
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        String accessToken = "accessToken";
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
-        Result result = OpenApiClient.send(url, accessToken,
-                new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    String accessToken = "accessToken";
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
+    Result result = OpenApiClient.send(url, accessToken,
+            new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            string AccessToken = "accessToken";
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
-            Result Result = OpenApiClient.Send(Url, AccessToken,
-                    new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    string AccessToken = "accessToken";
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
+    Result Result = OpenApiClient.Send(Url, AccessToken,
+            new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python

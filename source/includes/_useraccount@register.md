@@ -6,76 +6,76 @@
 用户注册接口，提供使用用户的手机、邮箱注册用户。成功后返回：用户名，OpenID，AccessToken，RefreshToken，ExpiresIn。
 
 ```java
-            //应用id
-            String appid = "yourAppid";
-            //私钥
-            String clientPrivateKey = "yourPrivateKey";
-            //公钥
-            String serverPublicKey = "yourPublicKey";
-            //初始化操作
-            OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-            //请求url
-            String url = "http://gw.open.ppdai.com/auth/registerservice/register";
-            Result result = OpenApiClient.send(url
-                    , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                    , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
-                    , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
-            System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/auth/registerservice/register";
+    Result result = OpenApiClient.send(url
+            , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+            , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
+            , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求url
-            String Url = "http://gw.open.ppdai.com/auth/registerservice/register";
-            Result Result = OpenApiClient.Send(Url
-                    , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                    , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
-                    , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求url
+    String Url = "http://gw.open.ppdai.com/auth/registerservice/register";
+    Result Result = OpenApiClient.Send(Url
+            , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+            , new PropertyObject("Email", "xxxxxx@ppdai.com", ValueTypeEnum.String)
+            , new PropertyObject("Role", 12, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python
-            appid="a769b53eb26849eba5d5e81ccb381a32"
-            code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-            #用户注册接口，提供使用用户的手机、邮箱注册用户
-            access_url = "http://gw.open.ppdai.com/auth/registerservice/register"
-            data = {
-              "Mobile": "15200000111",
-              "Email": "xxxxxx@ppdai.com",
-              "Role": 12
-            }
-            sort_data = rsa.sort(data)
-            sign = rsa.sign(sort_data)
-            list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #用户注册接口，提供使用用户的手机、邮箱注册用户
+    access_url = "http://gw.open.ppdai.com/auth/registerservice/register"
+    data = {
+      "Mobile": "15200000111",
+      "Email": "xxxxxx@ppdai.com",
+      "Role": 12
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
 
-            /*用户注册接口，提供使用用户的手机、邮箱注册用户*/
-            $url = "http://gw.open.ppdai.com/auth/registerservice/register";
-            $request = '{
-              "Mobile": "15200000111",
-              "Email": "xxxxxx@ppdai.com",
-              "Role": 12
-            }';
-            $result = send($url, $request);
-            echo $result
+    /*用户注册接口，提供使用用户的手机、邮箱注册用户*/
+    $url = "http://gw.open.ppdai.com/auth/registerservice/register";
+    $request = '{
+      "Mobile": "15200000111",
+      "Email": "xxxxxx@ppdai.com",
+      "Role": 12
+    }';
+    $result = send($url, $request);
+    echo $result
 ```
 
 ```shell
-            cur http://gw.open.ppdai.com/account/register \
-            -d account_name=13916818800 \
-            -d role=4 \
-            -d sign="xxx1"
+    cur http://gw.open.ppdai.com/account/register \
+    -d account_name=13916818800 \
+    -d role=4 \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -168,72 +168,72 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s。	|6
 ## 发送注册验证码(SendSMSRegisterCode)
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
-        Result result = OpenApiClient.send(url
-                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
+    Result result = OpenApiClient.send(url
+            , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+            , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 }
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求url
-            String Url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
-            Result Result = OpenApiClient.Send(Url
-                    , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                    , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求url
+    String Url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
+    Result Result = OpenApiClient.Send(Url
+            , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+            , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String));
+    Console.WriteLine(Result);
 ```
 
 ```python
-            appid="a769b53eb26849eba5d5e81ccb381a32"
-            code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-            #发送注册验证码
-            access_url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode"
-            data = {
-              "Mobile": "15200000001",
-              "DeviceFP": "1234567890"
-            }
-            sort_data = rsa.sort(data)
-            sign = rsa.sign(sort_data)
-            list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #发送注册验证码
+    access_url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode"
+    data = {
+      "Mobile": "15200000001",
+      "DeviceFP": "1234567890"
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
 
-            /*发送注册验证码*/
-            $url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
-            $request = '{
-              "Mobile": "15200000001",
-              "DeviceFP": "1234567890"
-            }';
-            $result = send($url, $request);
-            echo $result
+    /*发送注册验证码*/
+    $url = "http://gw.open.ppdai.com/auth/registerservice/sendsmsregistercode";
+    $request = '{
+      "Mobile": "15200000001",
+      "DeviceFP": "1234567890"
+    }';
+    $result = send($url, $request);
+    echo $result
 ```
 
 ```shell
-            curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
-            -d devicefp="xxxff" \
-            -d sign="xxx1"
+    curl http://gw.open.ppdai.com/account/{mobile}/sendsmsregistercode \
+    -d devicefp="xxxff" \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -306,80 +306,80 @@ ResultMessage	|String|	动态注册验证码发送成功	|返回信息
 ## 手机注册验证码注册 (SMSCodeRegister)
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
-        Result result = OpenApiClient.send(url
-                , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
-                , new PropertyObject("Code", "111111", ValueTypeEnum.String));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
+    Result result = OpenApiClient.send(url
+            , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+            , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
+            , new PropertyObject("Code", "111111", ValueTypeEnum.String));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
-            Result Result = OpenApiClient.Send(Url
-                    , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
-                    , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
-                    , new PropertyObject("Code", "111111", ValueTypeEnum.String));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
+    Result Result = OpenApiClient.Send(Url
+            , new PropertyObject("Mobile", "15200000001", ValueTypeEnum.String)
+            , new PropertyObject("DeviceFP", "asdfasdf4asdf546asf", ValueTypeEnum.String)
+            , new PropertyObject("Code", "111111", ValueTypeEnum.String));
+    Console.WriteLine(Result);
 ```
 
 ```python
-            appid="a769b53eb26849eba5d5e81ccb381a32"
-            code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-            #手机注册验证码注册
-            access_url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister"
-            data = {
-              "Mobile": "15200000001",
-              "DeviceFP": "1234567890",
-              "Code": "111111",
-              "Role": 8
-            }
-            sort_data = rsa.sort(data)
-            sign = rsa.sign(sort_data)
-            list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #手机注册验证码注册
+    access_url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister"
+    data = {
+      "Mobile": "15200000001",
+      "DeviceFP": "1234567890",
+      "Code": "111111",
+      "Role": 8
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
 
-            /*手机注册验证码注册*/
-            $url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
-            $request = '{
-              "Mobile": "15200000001",
-              "DeviceFP": "1234567890",
-              "Code": "111111",
-              "Role": 8
-            }';
-            $result = send($url, $request);
-            echo $result
+    /*手机注册验证码注册*/
+    $url = "http://gw.open.ppdai.com/open/registerservice/smscoderegister";
+    $request = '{
+      "Mobile": "15200000001",
+      "DeviceFP": "1234567890",
+      "Code": "111111",
+      "Role": 8
+    }';
+    $result = send($url, $request);
+    echo $result
 ```
 
 ```shell
-            curl http://gw.open.ppdai.com/account/{mobile}/smscoderegister \
-            -d devicefp="xxxff" \
-            -d code=1100 \
-            -d role=4 \
-            -d sign="xxx1"
+    curl http://gw.open.ppdai.com/account/{mobile}/smscoderegister \
+    -d devicefp="xxxff" \
+    -d code=1100 \
+    -d role=4 \
+    -d sign="xxx1"
 ```
 ### Header Parameters
 
@@ -463,68 +463,68 @@ ExpiresIn	|Int|	用户给第三方授权访问令牌超时时间，单位s	|6047
 
 ## 验证帐号是否存在 (AccountExist)
 ```java
-            //应用id
-            String appid = "yourAppid";
-            //私钥
-            String clientPrivateKey = "yourPrivateKey";
-            //公钥
-            String serverPublicKey = "yourPublicKey";
-            //初始化操作
-            OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-            //请求url
-            String url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
-            Result result = OpenApiClient.send(url
-                    , new PropertyObject("AccountName", "15200000001", ValueTypeEnum.String));
-            System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
+    Result result = OpenApiClient.send(url
+            , new PropertyObject("AccountName", "15200000001", ValueTypeEnum.String));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
-            Result Result = OpenApiClient.Send(Url
-                    , new PropertyObject("AccountName", "15200000001", ValueTypeEnum.String));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
+    Result Result = OpenApiClient.Send(Url
+            , new PropertyObject("AccountName", "15200000001", ValueTypeEnum.String));
+    Console.WriteLine(Result);
 ```
 
 ```python
-            appid="a769b53eb26849eba5d5e81ccb381a32"
-            code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-            #验证帐号是否存在
-            access_url = "http://gw.open.ppdai.com/auth/registerservice/accountexist"
-            data = {
-              "AccountName": "15200000001"
-            }
-            sort_data = rsa.sort(data)
-            sign = rsa.sign(sort_data)
-            list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #验证帐号是否存在
+    access_url = "http://gw.open.ppdai.com/auth/registerservice/accountexist"
+    data = {
+      "AccountName": "15200000001"
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
 
-            /*验证帐号是否存在*/
-            $url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
-            $request = '{
-              "AccountName": "15200000001"
-            }';
-            $result = send($url, $request);
-            echo $result
+    /*验证帐号是否存在*/
+    $url = "http://gw.open.ppdai.com/auth/registerservice/accountexist";
+    $request = '{
+      "AccountName": "15200000001"
+    }';
+    $result = send($url, $request);
+    echo $result
 ```
 
 ```shell
-            curl http://gw.open.ppdai.com/account/check/{accountname} \
-            -d sign="xxx1"
+    curl http://gw.open.ppdai.com/account/check/{accountname} \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
