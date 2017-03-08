@@ -55,13 +55,13 @@
 ```
 
 ```php
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    $url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
-    $accessToken="yourAccessToken";
-    $request = '{}';
-    $result = send($url, $request,$accessToken);
-    echo $result
+    authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+    echo authorizeResult;
+    url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
+    accessToken="yourAccessToken";
+    request = '{}';
+    result = send(url, request,accessToken);
+    echo result
 ```
 
 ```shell
