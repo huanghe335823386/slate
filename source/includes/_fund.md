@@ -4,53 +4,53 @@
 ## 获取用户资金余额 QueryBalance
 
 ```java
-    //应用id
-    String appid = "yourAppid";
-    //私钥
-    String clientPrivateKey = "yourPrivateKey";
-    //公钥
-    String serverPublicKey = "yourPublicKey";
-    //初始化操作
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+ //应用id
+ String appid = "yourAppid";
+ //私钥
+ String clientPrivateKey = "yourPrivateKey";
+ //公钥
+ String serverPublicKey = "yourPublicKey";
+ //初始化操作
+ OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-    String accessToken = "accessToken";
-    //请求url
-    String url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
-    Result result = OpenApiClient.send(url, accessToken);
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+ String accessToken = "accessToken";
+ //请求url
+ String url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
+ Result result = OpenApiClient.send(url, accessToken);
+ System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-    //应用id
-    string Appid = "yourAppid";
-    //私钥
-    string ClientPrivateKey = "yourPrivateKey";
-    //公钥
-    string ServerPublicKey = "yourPublicKey";
+//应用id
+string Appid = "yourAppid";
+//私钥
+string ClientPrivateKey = "yourPrivateKey";
+//公钥
+string ServerPublicKey = "yourPublicKey";
 
-    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-    string AccessToken = "accessToken";
-    //请求url
-    String Url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
-    Result Result = OpenApiClient.Send(Url, AccessToken);
-    Console.WriteLine(Result);
+OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+string AccessToken = "accessToken";
+//请求url
+String Url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
+Result Result = OpenApiClient.Send(Url, AccessToken);
+Console.WriteLine(Result);
 ```
 
 ```python
-    appid="a769b53eb26849eba5d5e81ccb381a32"
-    code = "5ae2ee0d135b47ac806fb822fe5477bd"
+appid="a769b53eb26849eba5d5e81ccb381a32"
+code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-    #step 1 授权
-    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-    #获取用户资金余额
-    access_url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance"
-    access_token = "your_access_token"
-    data = {}
-    sort_data = rsa.sort(data)
-    sign = rsa.sign(sort_data)
-    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+#step 1 授权
+authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+#获取用户资金余额
+access_url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance"
+access_token = "your_access_token"
+data = {}
+sort_data = rsa.sort(data)
+sign = rsa.sign(sort_data)
+list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
@@ -69,8 +69,8 @@ echo $result
 ```
 
 ```shell
-    curl http://gw.open.ppdai.com/fund/{open_id} \
-    -d sign=xxx1
+curl http://gw.open.ppdai.com/fund/{open_id} \
+-d sign=xxx1
 ```
 
 ### Header Parameters

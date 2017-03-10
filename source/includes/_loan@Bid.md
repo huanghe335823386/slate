@@ -3,82 +3,83 @@
 ## 投标接口 Bidding
 
 ```java
-    //应用id
-    String appid = "yourAppid";
-    //私钥
-    String clientPrivateKey = "yourPrivateKey";
-    //公钥
-    String serverPublicKey = "yourPublicKey";
-    //初始化操作
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+//应用id
+String appid = "yourAppid";
+//私钥
+String clientPrivateKey = "yourPrivateKey";
+//公钥
+String serverPublicKey = "yourPublicKey";
+//初始化操作
+OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-    String accessToken = "accessToken";
-    //请求url
-    String url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
-    Result result = OpenApiClient.send(url, accessToken,
-            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-            new PropertyObject("Amount",150, ValueTypeEnum.Double));
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+String accessToken = "accessToken";
+//请求url
+String url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
+Result result = OpenApiClient.send(url, accessToken,
+        new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+        new PropertyObject("Amount",150, ValueTypeEnum.Double));
+System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-    //应用id
-    string Appid = "yourAppid";
-    //私钥
-    string ClientPrivateKey = "yourPrivateKey";
-    //公钥
-    string ServerPublicKey = "yourPublicKey";
+//应用id
+string Appid = "yourAppid";
+//私钥
+string ClientPrivateKey = "yourPrivateKey";
+//公钥
+string ServerPublicKey = "yourPublicKey";
 
-    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-    string AccessToken = "accessToken";
-    //请求Url
-    String Url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
-    Result Result = OpenApiClient.Send(Url, AccessToken,
-            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-            new PropertyObject("Amount", 150, ValueTypeEnum.Double));
-    Console.WriteLine(Result);
+OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+string AccessToken = "accessToken";
+//请求Url
+String Url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
+Result Result = OpenApiClient.Send(Url, AccessToken,
+        new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+        new PropertyObject("Amount", 150, ValueTypeEnum.Double));
+Console.WriteLine(Result);
 ```
 
 ```python
-    appid="a769b53eb26849eba5d5e81ccb381a32"
-    code = "5ae2ee0d135b47ac806fb822fe5477bd"
+appid="a769b53eb26849eba5d5e81ccb381a32"
+code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-    #step 1 授权
-    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-    #投标接口
-    access_url = "http://gw.open.ppdai.com/invest/BidService/Bidding"
-    access_token = "your_access_token"
-    data = {
-      "ListingId": 9575229,
-      "Amount": 150
-    }
-    sort_data = rsa.sort(data)
-    sign = rsa.sign(sort_data)
-    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+#step 1 授权
+authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+#投标接口
+access_url = "http://gw.open.ppdai.com/invest/BidService/Bidding"
+access_token = "your_access_token"
+data = {
+  "ListingId": 9575229,
+  "Amount": 150
+}
+sort_data = rsa.sort(data)
+sign = rsa.sign(sort_data)
+list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-    /*step 1 通过code获取授权信息*/
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    /*投标接口*/
-    $url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
-    $accessToken="yourAccessToken";
-    $request = '{
-      "ListingId": 9575229,
-      "Amount": 150
-    }';
-    $result = send($url, $request,$accessToken);
-    echo $result
+<?php
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*投标接口*/
+$url = "http://gw.open.ppdai.com/invest/BidService/Bidding";
+$accessToken="yourAccessToken";
+$request = '{
+  "ListingId": 9575229,
+  "Amount": 150
+}';
+$result = send($url, $request,$accessToken);
+echo $result
 ```
 
 ```shell
-    curl http://gw.open.ppdai.com/invest/{access_token}/{listing_id}/bid \
-    -d amount=50 \
-    -d sign="xxx1" \
+curl http://gw.open.ppdai.com/invest/{access_token}/{listing_id}/bid \
+-d amount=50 \
+-d sign="xxx1" \
 ```
 ### Header Parameters
 
@@ -152,97 +153,98 @@ ResultMessage	|String	|失败的消息	|
 ## 我的投标接口 BidList
 
 ```java
-    //应用id
-    String appid = "yourAppid";
-    //私钥
-    String clientPrivateKey = "yourPrivateKey";
-    //公钥
-    String serverPublicKey = "yourPublicKey";
-    //初始化操作
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+//应用id
+String appid = "yourAppid";
+//私钥
+String clientPrivateKey = "yourPrivateKey";
+//公钥
+String serverPublicKey = "yourPublicKey";
+//初始化操作
+OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-    String accessToken = "accessToken";
-    //请求url
-    String url = "http://gw.open.ppdai.com/invest/BidService/BidList";
-    Result result = OpenApiClient.send(url, accessToken,
-            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-            new PropertyObject("StartTime","2016-03-21", ValueTypeEnum.DateTime),
-            new PropertyObject("EndTime","2016-03-21", ValueTypeEnum.DateTime),
-            new PropertyObject("PageIndex",1, ValueTypeEnum.Int32),
-            new PropertyObject("PageSize",20, ValueTypeEnum.Int32));
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+String accessToken = "accessToken";
+//请求url
+String url = "http://gw.open.ppdai.com/invest/BidService/BidList";
+Result result = OpenApiClient.send(url, accessToken,
+        new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+        new PropertyObject("StartTime","2016-03-21", ValueTypeEnum.DateTime),
+        new PropertyObject("EndTime","2016-03-21", ValueTypeEnum.DateTime),
+        new PropertyObject("PageIndex",1, ValueTypeEnum.Int32),
+        new PropertyObject("PageSize",20, ValueTypeEnum.Int32));
+System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-    //应用id
-    string Appid = "yourAppid";
-    //私钥
-    string ClientPrivateKey = "yourPrivateKey";
-    //公钥
-    string ServerPublicKey = "yourPublicKey";
+//应用id
+string Appid = "yourAppid";
+//私钥
+string ClientPrivateKey = "yourPrivateKey";
+//公钥
+string ServerPublicKey = "yourPublicKey";
 
-    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-    string AccessToken = "accessToken";
-    //请求Url
-    String Url = "http://gw.open.ppdai.com/invest/BidService/BidList";
-    Result Result = OpenApiClient.Send(Url, AccessToken,
-            new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
-            new PropertyObject("StartTime", "2016-03-21", ValueTypeEnum.DateTime),
-            new PropertyObject("EndTime", "2016-03-21", ValueTypeEnum.DateTime),
-            new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
-            new PropertyObject("PageSize", 20, ValueTypeEnum.Int32));
-    Console.WriteLine(Result);
+OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+string AccessToken = "accessToken";
+//请求Url
+String Url = "http://gw.open.ppdai.com/invest/BidService/BidList";
+Result Result = OpenApiClient.Send(Url, AccessToken,
+        new PropertyObject("ListingId", 9575229, ValueTypeEnum.Int32),
+        new PropertyObject("StartTime", "2016-03-21", ValueTypeEnum.DateTime),
+        new PropertyObject("EndTime", "2016-03-21", ValueTypeEnum.DateTime),
+        new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
+        new PropertyObject("PageSize", 20, ValueTypeEnum.Int32));
+Console.WriteLine(Result);
 ```
 
 ```python
-    appid="a769b53eb26849eba5d5e81ccb381a32"
-    code = "5ae2ee0d135b47ac806fb822fe5477bd"
+appid="a769b53eb26849eba5d5e81ccb381a32"
+code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-    #step 1 授权
-    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-    #我的投标接口
-    access_url = "http://gw.open.ppdai.com/invest/BidService/BidList"
-    access_token = "your_access_token"
-    data = {
-      "ListingId": 9575229,
-      "StartTime": "2016-03-21",
-      "EndTime": "2016-03-21",
-      "PageIndex": 1,
-      "PageSize": 20
-    }
-    sort_data = rsa.sort(data)
-    sign = rsa.sign(sort_data)
-    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+#step 1 授权
+authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+#我的投标接口
+access_url = "http://gw.open.ppdai.com/invest/BidService/BidList"
+access_token = "your_access_token"
+data = {
+  "ListingId": 9575229,
+  "StartTime": "2016-03-21",
+  "EndTime": "2016-03-21",
+  "PageIndex": 1,
+  "PageSize": 20
+}
+sort_data = rsa.sort(data)
+sign = rsa.sign(sort_data)
+list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-    /*step 1 通过code获取授权信息*/
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    /*我的投标接口*/
-    $url = "http://gw.open.ppdai.com/invest/BidService/BidList";
-    $accessToken="yourAccessToken";
-    $request = '{
-      "ListingId": 9575229,
-      "StartTime": "2016-03-21",
-      "EndTime": "2016-03-21",
-      "PageIndex": 1,
-      "PageSize": 20
-    }';
-    $result = send($url, $request,$accessToken);
-    echo $result
+<?php
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*我的投标接口*/
+$url = "http://gw.open.ppdai.com/invest/BidService/BidList";
+$accessToken="yourAccessToken";
+$request = '{
+  "ListingId": 9575229,
+  "StartTime": "2016-03-21",
+  "EndTime": "2016-03-21",
+  "PageIndex": 1,
+  "PageSize": 20
+}';
+$result = send($url, $request,$accessToken);
+echo $result
 ```
 
 ```shell
-    curl http://gw.open.ppdai.com/invest/{access_token}/bid/{listing_id} \
-    -d start_time="2016-03-21" \
-    -d end_time="2016-03-21" \
-    -d page_index=1 \
-    -d page_size=20 \
-    -d sign="xxx1"
+curl http://gw.open.ppdai.com/invest/{access_token}/bid/{listing_id} \
+-d start_time="2016-03-21" \
+-d end_time="2016-03-21" \
+-d page_index=1 \
+-d page_size=20 \
+-d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -319,77 +321,78 @@ ResultMessage|	String|	失败的消息|
 ## 债转购买接口 BuyDebt
 
 ```java
-    //应用id
-    String appid = "yourAppid";
-    //私钥
-    String clientPrivateKey = "yourPrivateKey";
-    //公钥
-    String serverPublicKey = "yourPublicKey";
-    //初始化操作
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+//应用id
+String appid = "yourAppid";
+//私钥
+String clientPrivateKey = "yourPrivateKey";
+//公钥
+String serverPublicKey = "yourPublicKey";
+//初始化操作
+OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-    String accessToken = "accessToken";
-    //请求url
-    String url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
-    Result result = OpenApiClient.send(url, accessToken,
-            new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+String accessToken = "accessToken";
+//请求url
+String url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
+Result result = OpenApiClient.send(url, accessToken,
+        new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
+System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-    //应用id
-    string Appid = "yourAppid";
-    //私钥
-    string ClientPrivateKey = "yourPrivateKey";
-    //公钥
-    string ServerPublicKey = "yourPublicKey";
+//应用id
+string Appid = "yourAppid";
+//私钥
+string ClientPrivateKey = "yourPrivateKey";
+//公钥
+string ServerPublicKey = "yourPublicKey";
 
-    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-    string AccessToken = "accessToken";
-    //请求Url
-    String Url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
-    Result Result = OpenApiClient.Send(Url, AccessToken,
-            new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
-    Console.WriteLine(Result);
+OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+string AccessToken = "accessToken";
+//请求Url
+String Url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
+Result Result = OpenApiClient.Send(Url, AccessToken,
+        new PropertyObject("debtDealId", 38458234, ValueTypeEnum.Int32));
+Console.WriteLine(Result);
 ```
 
 ```python
-    appid="a769b53eb26849eba5d5e81ccb381a32"
-    code = "5ae2ee0d135b47ac806fb822fe5477bd"
+appid="a769b53eb26849eba5d5e81ccb381a32"
+code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-    #step 1 授权
-    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-    #债转购买接口
-    access_url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt"
-    access_token = "your_access_token"
-    data = {
-      "debtDealId": 38458234
-    }
-    sort_data = rsa.sort(data)
-    sign = rsa.sign(sort_data)
-    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+#step 1 授权
+authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+#债转购买接口
+access_url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt"
+access_token = "your_access_token"
+data = {
+  "debtDealId": 38458234
+}
+sort_data = rsa.sort(data)
+sign = rsa.sign(sort_data)
+list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-    /*step 1 通过code获取授权信息*/
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    /*债转购买接口*/
-    $url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
-    $accessToken="yourAccessToken";
-    $request = '{
-      "debtDealId": 38458234
-    }';
-    $result = send($url, $request,$accessToken);
-    echo $result
+<?php
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*债转购买接口*/
+$url = "http://gw.open.ppdai.com/invest/BidService/BuyDebt";
+$accessToken="yourAccessToken";
+$request = '{
+  "debtDealId": 38458234
+}';
+$result = send($url, $request,$accessToken);
+echo $result
 ```
 
 ```shell
-    curl http://gw.open.ppdai.com/invest/{access_token}/{debtdeal_id}/debt \
-    -d sign="xxx1"
+curl http://gw.open.ppdai.com/invest/{access_token}/{debtdeal_id}/debt \
+-d sign="xxx1"
 ```
 ### Header Parameters
 
@@ -439,85 +442,86 @@ debtDealId|	Int	|债转编号|
 ## 用户最近投资标的信息 BatchLenderBidList
 
 ```java
-    //应用id
-    String appid = "yourAppid";
-    //私钥
-    String clientPrivateKey = "yourPrivateKey";
-    //公钥
-    String serverPublicKey = "yourPublicKey";
-    //初始化操作
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+//应用id
+String appid = "yourAppid";
+//私钥
+String clientPrivateKey = "yourPrivateKey";
+//公钥
+String serverPublicKey = "yourPublicKey";
+//初始化操作
+OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-    String accessToken = "accessToken";
-    //请求url
-    String url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
-    Result result = OpenApiClient.send(url, accessToken,
-            new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+String accessToken = "accessToken";
+//请求url
+String url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
+Result result = OpenApiClient.send(url, accessToken,
+        new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
+System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-    //应用id
-    string Appid = "yourAppid";
-    //私钥
-    string ClientPrivateKey = "yourPrivateKey";
-    //公钥
-    string ServerPublicKey = "yourPublicKey";
+//应用id
+string Appid = "yourAppid";
+//私钥
+string ClientPrivateKey = "yourPrivateKey";
+//公钥
+string ServerPublicKey = "yourPublicKey";
 
-    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-    string AccessToken = "accessToken";
-    //请求Url
-    String Url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
-    Result Result = OpenApiClient.Send(Url, AccessToken,
-            new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
-    Console.WriteLine(Result);
+OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+string AccessToken = "accessToken";
+//请求Url
+String Url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
+Result Result = OpenApiClient.Send(Url, AccessToken,
+        new PropertyObject("LenderNames", 38458234, ValueTypeEnum.Int32));
+Console.WriteLine(Result);
 ```
 
 ```python
-    appid="a769b53eb26849eba5d5e81ccb381a32"
-    code = "5ae2ee0d135b47ac806fb822fe5477bd"
+appid="a769b53eb26849eba5d5e81ccb381a32"
+code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-    #step 1 授权
-    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-    #（跟投）用户最近投资标的信息（批量）
-    access_url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList"
-    access_token = "your_access_token"
-    data = {
-      "LenderNames": [
-        "fell_2015"
-      ],
-      "TopIndex": 10
-    }
-    sort_data = rsa.sort(data)
-    sign = rsa.sign(sort_data)
-    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+#step 1 授权
+authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+#（跟投）用户最近投资标的信息（批量）
+access_url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList"
+access_token = "your_access_token"
+data = {
+  "LenderNames": [
+    "fell_2015"
+  ],
+  "TopIndex": 10
+}
+sort_data = rsa.sort(data)
+sign = rsa.sign(sort_data)
+list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-    /*step 1 通过code获取授权信息*/
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    /*（跟投）用户最近投资标的信息（批量）*/
-    $url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
-    $accessToken="yourAccessToken";
-    $request = '{
-      "LenderNames": [
-        "fell_2015"
-      ],
-      "TopIndex": 10
-    }';
-    $result = send($url, $request,$accessToken);
-    echo $result
+<?php
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*（跟投）用户最近投资标的信息（批量）*/
+$url = "http://gw.open.ppdai.com/invest/BidService/BatchLenderBidList";
+$accessToken="yourAccessToken";
+$request = '{
+  "LenderNames": [
+    "fell_2015"
+  ],
+  "TopIndex": 10
+}';
+$result = send($url, $request,$accessToken);
+echo $result
 
 ```
 
 ```shell
-    curl http://gw.open.ppdai.com/invest/{access_token}/bid?limit={page_num} \
-    -d lender_names=["fell_2015",""fell_2016"] \
-    -d sign="xxx1"
+curl http://gw.open.ppdai.com/invest/{access_token}/bid?limit={page_num} \
+-d lender_names=["fell_2015",""fell_2016"] \
+-d sign="xxx1"
 ```
 
 ### Header Parameters

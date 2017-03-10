@@ -4,80 +4,81 @@
 根据OpenID查询用户信息,其中username需要用服务器公钥解密
 
 ```java
-    //应用id
-    String appid = "yourAppid";
-    //私钥
-    String clientPrivateKey = "yourPrivateKey";
-    //公钥
-    String serverPublicKey = "yourPublicKey";
-    //初始化操作
-    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+//应用id
+String appid = "yourAppid";
+//私钥
+String clientPrivateKey = "yourPrivateKey";
+//公钥
+String serverPublicKey = "yourPublicKey";
+//初始化操作
+OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-    String accessToken = "accessToken";
-    //请求url
-    String url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
-    Result result = OpenApiClient.send(url, accessToken
-            , new PropertyObject("Timestamp", new Date(), ValueTypeEnum.DateTime));
-    //TODO rsaCryptoHelper 获取问题
-    System.out.println(String.format("返回结果:%s", result.isSucess() ? OpenApiClient.getRsaCryptoHelper().decryptByPrivateKey(result.getContext()) : result.getErrorMessage()));
+String accessToken = "accessToken";
+//请求url
+String url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
+Result result = OpenApiClient.send(url, accessToken
+        , new PropertyObject("Timestamp", new Date(), ValueTypeEnum.DateTime));
+//TODO rsaCryptoHelper 获取问题
+System.out.println(String.format("返回结果:%s", result.isSucess() ? OpenApiClient.getRsaCryptoHelper().decryptByPrivateKey(result.getContext()) : result.getErrorMessage()));
 ```
 
 ```csharp
-    //应用id
-    string Appid = "yourAppid";
-    //私钥
-    string ClientPrivateKey = "yourPrivateKey";
-    //公钥
-    string ServerPublicKey = "yourPublicKey";
+//应用id
+string Appid = "yourAppid";
+//私钥
+string ClientPrivateKey = "yourPrivateKey";
+//公钥
+string ServerPublicKey = "yourPublicKey";
 
-    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-    //请求url
-    String Url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
-    string AccessToken = "accessToken";
-    Result Result = OpenApiClient.Send(Url, AccessToken
-            , new PropertyObject("Timestamp", DateTime.Now, ValueTypeEnum.DateTime));
-    //TODO rsaCryptoHelper 获取问题
-    RsaCryptoHelper rsaCryptoHelper = new RsaCryptoHelper(PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-    string txt2 = rsaCryptoHelper.EncryptByPublicKey(Result.Context);
-    Console.WriteLine(txt2);
+OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+//请求url
+String Url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
+string AccessToken = "accessToken";
+Result Result = OpenApiClient.Send(Url, AccessToken
+        , new PropertyObject("Timestamp", DateTime.Now, ValueTypeEnum.DateTime));
+//TODO rsaCryptoHelper 获取问题
+RsaCryptoHelper rsaCryptoHelper = new RsaCryptoHelper(PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+string txt2 = rsaCryptoHelper.EncryptByPublicKey(Result.Context);
+Console.WriteLine(txt2);
 ```
 
 ```python
-    appid="a769b53eb26849eba5d5e81ccb381a32"
-    code = "5ae2ee0d135b47ac806fb822fe5477bd"
+appid="a769b53eb26849eba5d5e81ccb381a32"
+code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-    #step 1 授权
-    authorizeStr = client.authorize(appid=appid,code=code) #获得授权
-    authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
-    #根据OpenID查询用户信息,其中username需要用服务器公钥解密
-    access_url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID"
-    access_token = "your_access_token"
-    data = {
-      "OpenID": "befc7084c59845b68c85917b62580a8e1"
-    }
-    sort_data = rsa.sort(data)
-    sign = rsa.sign(sort_data)
-    list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
+#step 1 授权
+authorizeStr = client.authorize(appid=appid,code=code) #获得授权
+authorizeObj = pickle.loads(authorizeStr) # 将返回的authorize对象反序列化成对象，成功得到 OpenID、AccessToken、RefreshToken、ExpiresIn
+#根据OpenID查询用户信息,其中username需要用服务器公钥解密
+access_url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID"
+access_token = "your_access_token"
+data = {
+  "OpenID": "befc7084c59845b68c85917b62580a8e1"
+}
+sort_data = rsa.sort(data)
+sign = rsa.sign(sort_data)
+list_result = client.send(access_url,json.dumps(data) , appid, sign,access_token)
 
 ```
 
 ```php
-    /*step 1 通过code获取授权信息*/
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    /*根据OpenID查询用户信息,其中username需要用服务器公钥解密*/
-    $url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
-    $accessToken="yourAccessToken";
-    $request = '{
-      "OpenID": "befc7084c59845b68c85917b62580a8e1"
-    }';
-    $result = send($url, $request,$accessToken);
-    echo $result
+<?php
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*根据OpenID查询用户信息,其中username需要用服务器公钥解密*/
+$url = "http://gw.open.ppdai.com/open/openApiPublicQueryService/QueryUserNameByOpenID";
+$accessToken="yourAccessToken";
+$request = '{
+  "OpenID": "befc7084c59845b68c85917b62580a8e1"
+}';
+$result = send($url, $request,$accessToken);
+echo $result
 ```
 
 ```shell
-    curl http://gw.open.ppdai.com/account/{open_id} \
-    -d sign="xxx1"
+curl http://gw.open.ppdai.com/account/{open_id} \
+-d sign="xxx1"
 ```
 ### Header Parameters
 
