@@ -55,15 +55,16 @@
 ```
 
 ```php
-    /*step 1 通过code获取授权信息*/
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    /*获取用户资金余额*/
-    $url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
-    $accessToken="yourAccessToken";
-    $request = '{}';
-    $result = send($url, $request,$accessToken);
-    echo $result
+<?php
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*获取用户资金余额*/
+$url = "http://gw.open.ppdai.com/balance/balanceService/QueryBalance";
+$accessToken="yourAccessToken";
+$request = '{}';
+$result = send($url, $request,$accessToken);
+echo $result
 
 ```
 

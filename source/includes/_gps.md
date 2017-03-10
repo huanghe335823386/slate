@@ -229,24 +229,25 @@ Content|String	|RedirectUrl 表示要跳转的地址 (需要Url解码一下)	|{"
 ```
 
 ```php
-    /*step 1 通过code获取授权信息*/
-    $authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
-    echo $authorizeResult;
-    /*发标接口*/
-    $url = "http://gw.open.ppdai.com/cps/postlistingservice/regafterpostlisting";
-    $accessToken="yourAccessToken";
-    $request = '{
-      "RealName": "张三",
-      "ShenFenZH": "XXXXXXXXXXXXXXXXXX",
-      "ApplyLoanMonth": 12,
-      "ApplyLoanAmount": 1000,
-      "DaiKuanYT": "用于购物",
-      "LoanType": "10",
-      "Info": "'{'name':'孙XX','shenfenzh':'3XXXXXXXXXXXXXXXX5','zhiye':'上班族','fangchan':'有房,目前无房贷','chechan':'有车,但是有车贷未还','phone':'157XXXXXXXX','gongzixingshi':'现金','jingyingzz':'有','yuexin':'1500~3000','shebao':'连续6个月以内','duigongliushui':'半年银行流水10万以下','fuzhaiqingkuang':'有','applyCity':'蚌埠','money':'3000','month':'12','daikuanlx':'个人贷款','chushengnian':'1996','xinyong':'少量逾期','gongsiliushui':'3万以下','jingyingzhucedi':'本地'}'",
-      "OrderId": "123456789"
-    }';
-    $result = send($url, $request,$accessToken);
-    echo $result
+php
+/*step 1 通过code获取授权信息*/
+$authorizeResult = authorize("dbff240axxxx4a0e9501e0954a7cda4d");
+echo $authorizeResult;
+/*发标接口*/
+$url = "http://gw.open.ppdai.com/cps/postlistingservice/regafterpostlisting";
+$accessToken="yourAccessToken";
+$request = '{
+  "RealName": "张三",
+  "ShenFenZH": "XXXXXXXXXXXXXXXXXX",
+  "ApplyLoanMonth": 12,
+  "ApplyLoanAmount": 1000,
+  "DaiKuanYT": "用于购物",
+  "LoanType": "10",
+  "Info": "'{'name':'孙XX','shenfenzh':'3XXXXXXXXXXXXXXXX5','zhiye':'上班族','fangchan':'有房,目前无房贷','chechan':'有车,但是有车贷未还','phone':'157XXXXXXXX','gongzixingshi':'现金','jingyingzz':'有','yuexin':'1500~3000','shebao':'连续6个月以内','duigongliushui':'半年银行流水10万以下','fuzhaiqingkuang':'有','applyCity':'蚌埠','money':'3000','month':'12','daikuanlx':'个人贷款','chushengnian':'1996','xinyong':'少量逾期','gongsiliushui':'3万以下','jingyingzhucedi':'本地'}'",
+  "OrderId": "123456789"
+}';
+$result = send($url, $request,$accessToken);
+echo $result
 ```
 
 ```shell

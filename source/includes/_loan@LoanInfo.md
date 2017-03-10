@@ -3,71 +3,71 @@
 ##  投标列表接口 LoanList
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
-        Result result = OpenApiClient.send(url,
-                new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
-                new PropertyObject("StartDateTime", "2015-11-11 12:00:00.000", ValueTypeEnum.DateTime));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
+    Result result = OpenApiClient.send(url,
+            new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
+            new PropertyObject("StartDateTime", "2015-11-11 12:00:00.000", ValueTypeEnum.DateTime));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
-            Result Result = OpenApiClient.Send(Url,
-                    new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
-                    new PropertyObject("StartDateTime", "2015-11-11 12:00:00.000", ValueTypeEnum.DateTime));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
+    Result Result = OpenApiClient.Send(Url,
+            new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32),
+            new PropertyObject("StartDateTime", "2015-11-11 12:00:00.000", ValueTypeEnum.DateTime));
+    Console.WriteLine(Result);
 ```
 
 ```python
-        appid="a769b53eb26849eba5d5e81ccb381a32"
-        code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-        #新版投标列表接口（默认每页2000条）
-        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList"
-        data = {
-          "PageIndex": 1,
-          "StartDateTime": "2015-11-11 12:00:00.000"
-        }
-        sort_data = rsa.sort(data)
-        sign = rsa.sign(sort_data)
-        list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #新版投标列表接口（默认每页2000条）
+    access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList"
+    data = {
+      "PageIndex": 1,
+      "StartDateTime": "2015-11-11 12:00:00.000"
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 ```
 
 ```php
-        /*新版投标列表接口（默认每页2000条）*/
-        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
-        $request = '{
-          "PageIndex": 1,
-          "StartDateTime": "2015-11-11 12:00:00.000"
-        }';
-        $result = send($url, $request);
-        echo $result
+    /*新版投标列表接口（默认每页2000条）*/
+    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/LoanList";
+    $request = '{
+      "PageIndex": 1,
+      "StartDateTime": "2015-11-11 12:00:00.000"
+    }';
+    $result = send($url, $request);
+    echo $result
 
 ```
 
 ```shell
-        curl http://gw.open.ppdai.com/invest/loans?limit={page_num} \
-        -d start_time="2015-11-11 12:00:00 000" \
-        -d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/loans?limit={page_num} \
+    -d start_time="2015-11-11 12:00:00 000" \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -138,75 +138,75 @@ LoanInfos.PayWay	|Int	|还款方式(0:等额本息(按月还款) 1:一次性还�
 ## 散标详情批量接口 BatchListingInfos
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
-        Result result = OpenApiClient.send(url,
-                new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
+    Result result = OpenApiClient.send(url,
+            new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
-            Result Result = OpenApiClient.Send(Url,
-                    new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
+    Result Result = OpenApiClient.Send(Url,
+            new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python
-        appid="a769b53eb26849eba5d5e81ccb381a32"
-        code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-        #新版散标详情批量接口（请求列表不大于10）
-        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos"
-        data = {
-          "ListingIds": [
-            23886149,
-            23886150
-          ]
-        }
-        sort_data = rsa.sort(data)
-        sign = rsa.sign(sort_data)
-        list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #新版散标详情批量接口（请求列表不大于10）
+    access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos"
+    data = {
+      "ListingIds": [
+        23886149,
+        23886150
+      ]
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-        /*新版散标详情批量接口（请求列表不大于10）*/
-        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
-        $request = '{
-          "ListingIds": [
-            23886149,
-            23886150
-          ]
-        }';
-        $result = send($url, $request);
-        echo $result
+    /*新版散标详情批量接口（请求列表不大于10）*/
+    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingInfos";
+    $request = '{
+      "ListingIds": [
+        23886149,
+        23886150
+      ]
+    }';
+    $result = send($url, $request);
+    echo $result
 
 ```
 
 ```shell
-        curl http://gw.open.ppdai.com/invest/loanitems \
-        -d listing_ids=[23886149,23886150] \
-        -d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/loanitems \
+    -d listing_ids=[23886149,23886150] \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -337,68 +337,68 @@ ResultCode	|String	|暂未使用|
 ## 债转列表接口 DebtList
 
 ```java
-         //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+     //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
-        Result result = OpenApiClient.send(url,
-                new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
+    Result result = OpenApiClient.send(url,
+            new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
-            Result Result = OpenApiClient.Send(Url,
-                    new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
+    Result Result = OpenApiClient.Send(Url,
+            new PropertyObject("PageIndex", 1, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python
-        appid="a769b53eb26849eba5d5e81ccb381a32"
-        code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-        #新版债转列表接口（默认每页2000条）
-        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList"
-        data = {
-          "PageIndex": 1
-        }
-        sort_data = rsa.sort(data)
-        sign = rsa.sign(sort_data)
-        list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #新版债转列表接口（默认每页2000条）
+    access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList"
+    data = {
+      "PageIndex": 1
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-        /*新版债转列表接口（默认每页2000条）*/
-        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
-        $request = '{
-          "PageIndex": 1
-        }';
-        $result = send($url, $request);
-        echo $result
+    /*新版债转列表接口（默认每页2000条）*/
+    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/DebtList";
+    $request = '{
+      "PageIndex": 1
+    }';
+    $result = send($url, $request);
+    echo $result
 
 ```
 
 ```shell
-        curl http://gw.open.ppdai.com/invest/debts?limit={page_num} \
-        -d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/debts?limit={page_num} \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -466,74 +466,74 @@ DebtInfos.CreditCode	|String	|列表等级|
 ## 债转详情批量接口 BatchDebtInfos
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
-        Result result = OpenApiClient.send(url,
-                new PropertyObject("DebtIds", 1, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
+    Result result = OpenApiClient.send(url,
+            new PropertyObject("DebtIds", 1, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
-            Result Result = OpenApiClient.Send(Url,
-                    new PropertyObject("DebtIds", 1, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
+    Result Result = OpenApiClient.Send(Url,
+            new PropertyObject("DebtIds", 1, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
+    Console.WriteLine(Result);
 ```
 
 ```python
-        appid="a769b53eb26849eba5d5e81ccb381a32"
-        code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-        #新版债转详情批量接口（请求列表不大于20）
-        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos"
-        data = {
-          "DebtIds": [
-            2594108
-          ]
-        }
-        sort_data = rsa.sort(data)
-        sign = rsa.sign(sort_data)
-        list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #新版债转详情批量接口（请求列表不大于20）
+    access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos"
+    data = {
+      "DebtIds": [
+        2594108
+      ]
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-        /*新版债转详情批量接口（请求列表不大于20）*/
-        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
-        $request = '{
-          "DebtIds": [
-            2594108
-          ]
-        }';
-        $result = send($url, $request);
-        echo $result
+    /*新版债转详情批量接口（请求列表不大于20）*/
+    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchDebtInfos";
+    $request = '{
+      "DebtIds": [
+        2594108
+      ]
+    }';
+    $result = send($url, $request);
+    echo $result
 
 ```
 
 ```shell
-        curl http://gw.open.ppdai.com/invest/debtitems \
-        -d debt_ids=[2594108,2594109] \
-        -d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/debtitems \
+    -d debt_ids=[2594108,2594109] \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -630,73 +630,73 @@ DebtInfos.PastDueNumber	|Int|	曾逾期期数|
 ## 列表投标详情批量接口 BatchListingBidInfos
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
-        Result result = OpenApiClient.send(url,
-                new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
+    Result result = OpenApiClient.send(url,
+            new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
-            Result Result = OpenApiClient.Send(Url,
-                    new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
+    Result Result = OpenApiClient.Send(Url,
+            new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python
-        appid="a769b53eb26849eba5d5e81ccb381a32"
-        code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-        #新版列表投标详情批量接口（请求列表大小不大于5）
-        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos"
-        data = {
-          "ListingIds": [
-            100001
-          ]
-        }
-        sort_data = rsa.sort(data)
-        sign = rsa.sign(sort_data)
-        list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #新版列表投标详情批量接口（请求列表大小不大于5）
+    access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos"
+    data = {
+      "ListingIds": [
+        100001
+      ]
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-        /*新版列表投标详情批量接口（请求列表大小不大于5）*/
-        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
-        $request = '{
-          "ListingIds": [
-            100001
-          ]
-        }';
-        $result = send($url, $request);
-        echo $result
+    /*新版列表投标详情批量接口（请求列表大小不大于5）*/
+    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingBidInfos";
+    $request = '{
+      "ListingIds": [
+        100001
+      ]
+    }';
+    $result = send($url, $request);
+    echo $result
 
 ```
 
 ```shell
-        curl http://gw.open.ppdai.com/invest/bidlistingitems \
-        -d listing_ids=[100001,100002] \
-        -d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/bidlistingitems \
+    -d listing_ids=[100001,100002] \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
@@ -776,73 +776,73 @@ ListingBidsInfos.ListingBidsInfo.Bids.BidDateTime|	DateTime	|投标时间|
 ## 列表状态查询批量接口 BatchListingStatusInfos
 
 ```java
-        //应用id
-        String appid = "yourAppid";
-        //私钥
-        String clientPrivateKey = "yourPrivateKey";
-        //公钥
-        String serverPublicKey = "yourPublicKey";
-        //初始化操作
-        OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
+    //应用id
+    String appid = "yourAppid";
+    //私钥
+    String clientPrivateKey = "yourPrivateKey";
+    //公钥
+    String serverPublicKey = "yourPublicKey";
+    //初始化操作
+    OpenApiClient.Init(appid, RsaCryptoHelper.PKCSType.PKCS8, serverPublicKey, clientPrivateKey);
 
-        //请求url
-        String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
-        Result result = OpenApiClient.send(url,
-                new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
-        System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
+    //请求url
+    String url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
+    Result result = OpenApiClient.send(url,
+            new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
+    System.out.println(String.format("返回结果:%s", result.isSucess() ? result.getContext() : result.getErrorMessage()));
 
 ```
 
 ```csharp
-            //应用id
-            string Appid = "yourAppid";
-            //私钥
-            string ClientPrivateKey = "yourPrivateKey";
-            //公钥
-            string ServerPublicKey = "yourPublicKey";
+    //应用id
+    string Appid = "yourAppid";
+    //私钥
+    string ClientPrivateKey = "yourPrivateKey";
+    //公钥
+    string ServerPublicKey = "yourPublicKey";
 
-            OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
-            //请求Url
-            String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
-            Result Result = OpenApiClient.Send(Url,
-                    new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
-            Console.WriteLine(Result);
+    OpenApiClient.Init(Appid, PKCSType.PKCS8, ServerPublicKey, ClientPrivateKey);
+    //请求Url
+    String Url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
+    Result Result = OpenApiClient.Send(Url,
+            new PropertyObject("ListingIds", 1, ValueTypeEnum.Int32));
+    Console.WriteLine(Result);
 ```
 
 ```python
-        appid="a769b53eb26849eba5d5e81ccb381a32"
-        code = "5ae2ee0d135b47ac806fb822fe5477bd"
+    appid="a769b53eb26849eba5d5e81ccb381a32"
+    code = "5ae2ee0d135b47ac806fb822fe5477bd"
 
-        #新版列表状态查询批量接口（请求列表大小不大于20条）
-        access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos"
-        data ={
-          "ListingIds": [
-            100000
-          ]
-        }
-        sort_data = rsa.sort(data)
-        sign = rsa.sign(sort_data)
-        list_result = client.send(access_url,json.dumps(data) , appid, sign)
+    #新版列表状态查询批量接口（请求列表大小不大于20条）
+    access_url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos"
+    data ={
+      "ListingIds": [
+        100000
+      ]
+    }
+    sort_data = rsa.sort(data)
+    sign = rsa.sign(sort_data)
+    list_result = client.send(access_url,json.dumps(data) , appid, sign)
 
 ```
 
 ```php
-        /*新版列表状态查询批量接口（请求列表大小不大于20条）*/
-        $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
-        $request = '{
-          "ListingIds": [
-            100000
-          ]
-        }';
-        $result = send($url, $request);
-        echo $result
+    /*新版列表状态查询批量接口（请求列表大小不大于20条）*/
+    $url = "http://gw.open.ppdai.com/invest/LLoanInfoService/BatchListingStatusInfos";
+    $request = '{
+      "ListingIds": [
+        100000
+      ]
+    }';
+    $result = send($url, $request);
+    echo $result
 
 ```
 
 ```shell
-        curl http://gw.open.ppdai.com/invest/listing/status \
-        -d listing_ids=[100000,100001] \
-        -d sign="xxx1"
+    curl http://gw.open.ppdai.com/invest/listing/status \
+    -d listing_ids=[100000,100001] \
+    -d sign="xxx1"
 ```
 
 ### Header Parameters
